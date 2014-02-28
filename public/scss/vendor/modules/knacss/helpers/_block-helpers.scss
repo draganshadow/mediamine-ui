@@ -1,0 +1,65 @@
+/**
+ * Blocks widths 
+ * (percentages and pixels) 
+ */
+%width-helper {
+  @include mq(small) {
+    width: auto;
+  }
+}
+
+.w10    { width: 10%; }
+.w20    { width: 20%; }
+.w25    { width: 25%; }
+.w30    { width: 30%; }
+.w33    { width: 33.333%; }
+.w40    { width: 40%; }
+.w50    { width: 50%; }
+.w60    { width: 60%;     @extend %width-helper; }
+.w66    { width: 66.666%; @extend %width-helper; }
+.w70    { width: 70%;     @extend %width-helper; }
+.w75    { width: 75%;     @extend %width-helper; }
+.w80    { width: 80%;     @extend %width-helper; }
+.w90    { width: 90%;     @extend %width-helper; }
+.w100   { width: 100%;    @extend %width-helper; }
+
+.w50p   { width:  50px; }
+.w100p  { width: 100px; }
+.w150p  { width: 150px; }
+.w200p  { width: 200px; }
+.w300p  { width: 300px; }
+.w400p  { width: 400px; }
+.w500p  { width: 500px; }
+.w600p  { width: 600px;   @extend %width-helper; }
+.w700p  { width: 700px;   @extend %width-helper; }
+.w800p  { width: 800px;   @extend %width-helper; }
+.w960p  { width: 960px;   @extend %width-helper; }
+.mw960p { max-width: 960px; }
+
+.h10    { height: 10%; }
+.h20    { height: 20%; }
+.h25    { height: 25%; }
+.h30    { height: 30%; }
+.h33    { height: 33.333%; }
+.h40    { height: 40%; }
+.h50    { height: 50%; }
+.h60    { height: 60%; }
+.h66    { height: 66.666%; }
+.h70    { height: 70%; }
+.h75    { height: 75%; }
+.h80    { height: 80%; }
+.h90    { height: 90%; }
+.h100   { height: 100%; }
+
+.h50p   { height:  50px; }
+.h100p  { height: 100px; }
+.h150p  { height: 150px; }
+.h200p  { height: 200px; }
+.h300p  { height: 300px; }
+.h400p  { height: 400px; }
+.h500p  { height: 500px; }
+.h600p  { height: 600px; }
+.h700p  { height: 700px; }
+.h800p  { height: 800px; }
+.h960p  { height: 960px; }
+.mw960p { max-height: 960px; }
