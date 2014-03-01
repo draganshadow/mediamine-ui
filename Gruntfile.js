@@ -10,6 +10,11 @@ module.exports = function (grunt) {
         },
         copy: {
             main: {
+                fonts: {
+                    expand: true,
+                    src: ['js/libs/sass-bootstrap/fonts/*'],
+                    dest: 'build/fonts/'
+                },
                 files: [
                     {
                         expand: true,
@@ -22,13 +27,13 @@ module.exports = function (grunt) {
                         cwd: 'public/',
                         src: ['index.html'],
                         dest: 'build/'
-                     },
+                    },
                     {
                         expand: true,
                         cwd: 'public/js/libs/',
                         src: ['**/*'],
                         dest: 'build/js/libs/'
-                     }
+                    }
                 ]
             }
         },
@@ -46,9 +51,9 @@ module.exports = function (grunt) {
         },
         compass: {
             main: {
-              options: {
-                  config: 'config.rb'
-              }
+                options: {
+                    config: 'config.rb'
+                }
             }
         },
         karma: {
