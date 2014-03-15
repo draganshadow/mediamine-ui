@@ -11,7 +11,7 @@
                 </div>
                 <div class="panel-body">
                     <ul>
-                        <li ng-repeat="staff in video.staffs | filter:{role.name:'!actor'}"><strong>{{staff.role.name}}: </strong>{{staff.person.name}}</li>
+                        <li ng-repeat="staff in video.staffs | filter:{role:'!actor'}"><strong>{{staff.role.name}}: </strong>{{staff.person.name}}</li>
                         <li>
                             <strong>Genre: </strong><span ng-repeat="genre in video.genres"><span class="label label-default">{{genre.name}}</span>{{$last ? '' : ' '}}</span>
                         </li>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="panel-body pa2 oHiddenY oScrollX">
                     <table><tr>
-                        <td class="pa2 vTop" ng-repeat="staff in video.staffs | filter:{role.name:'actor'}">
+                        <td class="pa2 vTop" ng-repeat="staff in video.staffs | filter:{role:'actor'}">
                         <div class="thumbnail w200p">
                             <img class="h200p" src="images/200-200-{{video.images[0].pathKey}}.jpg" alt="{{staff.person.name}}">
                             <div class="caption">
