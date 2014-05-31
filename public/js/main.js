@@ -20,10 +20,12 @@ require.config({
         'angular': './libs/angular/angular',
         'angular-route': './libs/angular-route/angular-route',
         'angular-resource': './libs/angular-resource/angular-resource',
+        'ui-bootstrap-dropdown': './libs/angular-ui-bootstrap/src/dropdownToggle/dropdownToggle',
         'restangular': './libs/restangular/dist/restangular',
         'bootstrap3': './libs/bootstrap/dist/js/bootstrap',
         'lodash': './libs/lodash/dist/lodash',
         'jquery': './libs/jquery/jquery',
+        'showdown': './libs/showdown/compressed/showdown',
         'projekktor': './vendor/projekktor/projekktor-1.3.03'
     },
 
@@ -42,6 +44,9 @@ require.config({
             deps: ['angular']
         },
         'angular-resource': {
+            deps: ['angular']
+        },
+        'ui-bootstrap-dropdown': {
             deps: ['angular']
         },
         'restangular': {

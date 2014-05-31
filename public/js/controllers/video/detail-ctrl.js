@@ -1,4 +1,4 @@
-define(['./../index', 'projekktor'], function (controllers) {
+define(['./../index', '../../directives/projekktor'], function (controllers) {
     'use strict';
     controllers.controller('VideoDetail', function ($scope, $routeParams, Restangular) {
         var bitrates = [150,300,500,1000];

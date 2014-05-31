@@ -6,6 +6,7 @@ define(['./../index', './../../directives/whenScrolled'], function (controllers)
         if (typeof $routeParams.page !== 'undefined') {
             params.page = $routeParams.page;
         }
+        $scope.search = {};
         $scope.videos = [];
         $scope.genres = [];
 

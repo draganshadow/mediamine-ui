@@ -11,5 +11,9 @@ define([
     'controllers/person/detail-ctrl',
     'controllers/video/detail-ctrl',
     'controllers/video/list-ctrl',
+    'controllers/admin/module/detail-ctrl',
+    'controllers/admin/module/list-ctrl',
+    'controllers/admin/setting/list-ctrl',
+    'controllers/admin/tunnel/list-ctrl',
     'directives/activeLink'
 ], function () {});

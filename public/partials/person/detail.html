@@ -1,6 +1,33 @@
 <div ng-show="person" ng-cloak>
+
     <div class="page-header">
         <h1>{{person.name}}</h1>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-4 column"><img ng-src="{{person.images[0].pathKey | imagePath : 400 : 400 : 'jpg'}}" class="thumbnail img-rounded"></div>
+        <div class="col-md-8 column">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Details
+                </div>
+                <div class="panel-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Summary
+                </div>
+                <div class="panel-body">
+                    {{person.summary}}
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row clearfix">
@@ -13,7 +40,7 @@
                     <div class="col-sm-6 col-md-3 mb20" ng-repeat="video in person.videos">
                         <div class="thumbnail">
                             <div class="h300p ovfh">
-                                <img class="w100" ng-src="images/400-400-{{video.images[0].pathKey}}.jpg" alt="{{video.name}}">
+                                <img class="w100" ng-src="{{video.images[0].pathKey | imagePath : 400 : 400 : 'jpg'}}" alt="{{video.name}}">
                             </div>
                             <div class="caption">
                                 <h4 class="nowrap ovfh"><a href="#/video/{{video.id}}">{{video.name}}</a> ({{video.year}})</h4>

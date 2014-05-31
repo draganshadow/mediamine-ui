@@ -3,7 +3,7 @@
         <h1>{{video.name}} ({{video.year}})</h1>
     </div>
     <div class="row clearfix">
-        <div class="col-md-4 column"><img src="images/400-400-{{video.images[0].pathKey}}.jpg" class="thumbnail img-rounded"></div>
+        <div class="col-md-4 column"><img ng-src="images/400-400-{{video.images[0].pathKey}}.jpg" class="thumbnail img-rounded"></div>
         <div class="col-md-8 column">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -46,7 +46,7 @@
                     <table><tr>
                         <td class="pa2 vTop" ng-repeat="staff in video.staffs | filter:{role:'actor'}">
                         <div class="thumbnail w200p">
-                            <img class="h200p" src="images/200-200-{{video.images[0].pathKey}}.jpg" alt="{{staff.person.name}}">
+                            <img class="h200p" ng-src="images/200-200-{{video.images[0].pathKey}}.jpg" alt="{{staff.person.name}}">
                             <div class="caption">
                                 <h4><a href="#/person/{{staff.person.id}}">{{staff.person.name}}</a></h4>
                                 <h5>{{staff.character.name}}</h5>

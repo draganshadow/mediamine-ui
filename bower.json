@@ -24,6 +24,7 @@
       "requirejs-domready": "~2.0.1",
       "requirejs-text": "~2.0.7",
       "requirejs-plugins": "~1.0.2",
-      "chai": "latest"
+      "chai": "latest",
+      "showdown": "latest"
   }
 }

@@ -44,6 +44,27 @@ define(['./app', './config'], function (app) {
             controller: 'VideoList'
         });
 
+        $routeProvider.when('/admin/module', {
+            templateUrl: 'partials/admin/module/list.html',
+            controller: 'ModuleList'
+//            resolve: resolveController('controllers/admin/module/list-ctrl.js')
+        });
+
+        $routeProvider.when('/admin/module/:name', {
+            templateUrl: 'partials/admin/module/detail.html',
+            controller: 'ModuleDetail'
+        });
+
+        $routeProvider.when('/admin/setting', {
+            templateUrl: 'partials/admin/setting/list.html',
+            controller: 'SettingList'
+        });
+
+        $routeProvider.when('/admin/tunnel', {
+            templateUrl: 'partials/admin/tunnel/list.html',
+            controller: 'TunnelList'
+        });
+
         $routeProvider.otherwise({
             redirectTo: '/'
         });
