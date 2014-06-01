@@ -1,9 +1,27 @@
 define(['./../../index'], function (controllers) {
     'use strict';
     controllers.controller('TunnelList', function ($scope, $location, Restangular) {
-        Restangular.one('tunnel').getList()
-            .then(function(result) {
-                $scope.tunnels = result;
-            });
+        var refreshList = function() {
+            Restangular.all('tunnel').getList()
+                .then(function(result) {
+                    $scope.tunnels = result;
+                });
+        };
+
+        $scope.enable = function (tunnel) {
+            tunnel.post('enable', {key:tunnel.key})
+                .then(function(result) {
+                    refreshList();
+                });
+        };
+
+        $scope.disable = function (tunnel) {
+            tunnel.post('disable', {key:tunnel.key})
+                .then(function(result) {
+                    refreshList();
+                });
+        };
+
+        refreshList();
     });
 });

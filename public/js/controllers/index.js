@@ -4,7 +4,7 @@
  * below, you can see we bring in our services and constants modules 
  * which avails each controller of, for example, the `config` constants object.
  **/
-define(['angular', '../config', '../services/index', '../filters/imagePath', '../directives/goTo', 'ui-bootstrap-dropdown'], function (ng) {
+define(['angular', '../config', '../services/index', '../filters/imagePath', '../directives/goTo', 'ui-bootstrap-dropdown', 'ui-bootstrap-modal'], function (ng) {
     'use strict';
-    return ng.module('app.controllers', ['app.constants', 'app.services', 'ui.bootstrap.dropdownToggle']);
+    return ng.module('app.controllers', ['app.constants', 'app.services', 'ui.bootstrap.dropdownToggle', 'ui.bootstrap.modal']);
 });

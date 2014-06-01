@@ -14,6 +14,7 @@ define([
     'controllers/admin/module/detail-ctrl',
     'controllers/admin/module/list-ctrl',
     'controllers/admin/setting/list-ctrl',
+    //'controllers/admin/setting/edit-ctrl',
     'controllers/admin/tunnel/list-ctrl',
     'directives/activeLink'
 ], function () {});

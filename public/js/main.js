@@ -21,6 +21,8 @@ require.config({
         'angular-route': './libs/angular-route/angular-route',
         'angular-resource': './libs/angular-resource/angular-resource',
         'ui-bootstrap-dropdown': './libs/angular-ui-bootstrap/src/dropdownToggle/dropdownToggle',
+        'ui-bootstrap-transition': './libs/angular-ui-bootstrap/src/transition/transition',
+        'ui-bootstrap-modal': './libs/angular-ui-bootstrap/src/modal/modal',
         'restangular': './libs/restangular/dist/restangular',
         'bootstrap3': './libs/bootstrap/dist/js/bootstrap',
         'lodash': './libs/lodash/dist/lodash',
@@ -48,6 +50,12 @@ require.config({
         },
         'ui-bootstrap-dropdown': {
             deps: ['angular']
+        },
+        'ui-bootstrap-transition': {
+            deps: ['angular']
+        },
+        'ui-bootstrap-modal': {
+            deps: ['angular', 'ui-bootstrap-transition']
         },
         'restangular': {
             deps: ['angular', 'lodash']
