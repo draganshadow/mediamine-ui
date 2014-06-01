@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 # uncomment if you need twitter bootstrap
 # gem "bootstrap-sass", "2.3.0.0"
 
+gem "sass", "3.2.19"
 gem "bourbon", "3.1.1"
-gem "compass", "0.12.2"
+gem "compass", "0.12.6"
 gem "sass-globbing", "1.0.0"
 gem "oily_png" # improves speed of sprites generation
