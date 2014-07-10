@@ -44,6 +44,11 @@ define(['./app', './config'], function (app) {
             controller: 'VideoList'
         });
 
+        $routeProvider.when('/admin/files', {
+            templateUrl: 'partials/admin/files/main.html',
+            controller: 'FilesMainAdmin'
+        });
+
         $routeProvider.when('/admin/module', {
             templateUrl: 'partials/admin/module/list.html',
             controller: 'ModuleList'
