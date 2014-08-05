@@ -17,16 +17,18 @@
                             <th>Group</th>
                             <th>Key</th>
                             <th>Status</th>
+                            <th>Status</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="task in tasks">
                             <td>{{task.groupKey}}</td>
                             <td>{{task.key}}</td>
+                            <td>{{task.barLabel}}</td>
                             <td>
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="{{task.percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{task.percent}}%;">
-                                        {{task.barLabel}}
+                                        {{task.percent}}%
                                     </div>
                                 </div>
                             </td>
