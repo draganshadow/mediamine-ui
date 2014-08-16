@@ -8,7 +8,7 @@ define(['./../../index'], function (controllers) {
                 .then(function(result) {
                     for (var i = 0, j = result.length; i < j; i += 1) {
                         var task = result[i];
-                        task.percent = task.nbTasks ? (task.nbTasks - task.nbRemainingTasks) / task.nbTasks * 100 : 100;
+                        task.percent = task.nbTasks ? Math.ceil((task.nbTasks - task.nbRemainingTasks) / task.nbTasks * 100) : 100;
                         task.barLabel = (task.nbTasks - task.nbRemainingTasks) + ' / ' + task.nbTasks;
                         result[i] = task;
                     }

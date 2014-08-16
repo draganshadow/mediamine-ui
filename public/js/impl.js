@@ -12,6 +12,7 @@ define([
     'controllers/video/detail-ctrl',
     'controllers/video/list-ctrl',
     'controllers/admin/files/main-ctrl',
+    'controllers/admin/maintenance/list-ctrl',
     'controllers/admin/tasks/main-ctrl',
     'controllers/admin/module/detail-ctrl',
     'controllers/admin/module/list-ctrl',

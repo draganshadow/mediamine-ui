@@ -1,0 +1,39 @@
+
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Actions
+            </div>
+            <div class="panel-body">
+                <button ng-repeat="action in actions" ng-click="execute(action)">{{action}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

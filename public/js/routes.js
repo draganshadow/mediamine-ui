@@ -49,6 +49,11 @@ define(['./app', './config'], function (app) {
             controller: 'FilesMainAdmin'
         });
 
+        $routeProvider.when('/admin/maintenance', {
+            templateUrl: 'partials/admin/maintenance/list.html',
+            controller: 'Maintenance'
+        });
+
         $routeProvider.when('/admin/tasks', {
             templateUrl: 'partials/admin/tasks/main.html',
             controller: 'TasksMainAdmin'
