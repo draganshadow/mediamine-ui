@@ -1,0 +1,27 @@
+<panel ng-cloak>
+    <panel-heading><h1>Setting</h1></panel-heading>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Group</th>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="setting in settings">
+            <td>{{setting.id}}</td>
+            <td>{{setting.groupKey}}</td>
+            <td>{{setting.key}}</td>
+            <td>{{setting.value}}</td>
+            <td>
+                <div ng-if="setting.editable">
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="edit(setting)">Edit</button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</panel>

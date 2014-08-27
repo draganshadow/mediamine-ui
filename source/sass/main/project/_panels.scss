@@ -1,0 +1,21 @@
+.side-panel {
+  padding-top: 5px;
+  background-color: #A9A9A9;
+  &.side-panel-right {
+    .panel-body {
+      background-color: #cccccc;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+  &.last-panel {
+    padding-bottom: 5px;
+  }
+  &.scrollable {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}

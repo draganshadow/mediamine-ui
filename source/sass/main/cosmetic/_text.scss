@@ -1,0 +1,9 @@
+// Text
+// ====
+
+@include cosmetic('text', 'text-align', left center right justify);
+@include cosmetic('space', 'white-space', normal nowrap pre pre-line pre-wrap);
+
+.text-bound {
+  max-width: 48em;
+}

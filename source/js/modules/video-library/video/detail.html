@@ -1,0 +1,48 @@
+<panel ng-show="video" ng-cloak>
+    <panel-heading><h1>{{video.name}}<span ng-if="video.year"> ({{video.year}})</span></h1></panel-heading>
+    <div class="row clearfix">
+        <div class="col-md-4 column"><img ng-src="{{video.images[0].pathKey | imagePath : 300 : 400 : 'jpg' : 'hrbox' : 'video': 'hrbox_ffffff'}}" class="thumbnail img-rounded"></div>
+        <div class="col-md-8 column">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Details
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li ng-repeat="staff in video.staffs | filter:{role:'!actor'}"><strong>{{staff.role.name}}: </strong>{{staff.person.name}}</li>
+                        <li>
+                            <strong>Genre: </strong><span ng-repeat="genre in video.genres"><span class="label label-default">{{genre.name}}</span>{{$last ? '' : ' '}}</span>
+                        </li>
+                    </ul>
+                    <div class="btn-group">
+                        <a class="btn btn-primary" ng-click="$root.$emit('playlist.play', video)"><span class="glyphicon glyphicon-play"></span> Play</a>
+                        <a class="btn btn-default" type="button"><span class="glyphicon glyphicon-download"></span> Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Summary
+        </div>
+        <div class="panel-body">
+            {{video.summary}}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Actors
+        </div>
+        <div class="panel-body scroll-x">
+            <table><tr>
+                <td class="valign-top" ng-repeat="staff in video.staffs | filter:{role:'actor'}">
+                    <tile tile-class="width-xl margin-right-xs" image="{{person.images[0].pathKey | imagePath : 300 : 400 : 'jpg' : 'hrbox' : 'portrait' : 'hrbox_ffffff'}}" image-height="xl" title="{{staff.person.name}}" index="$index">
+                        <h4 class="space-nowrap overflow-hidden"><a ui-sref="mediamine.videolib.person({id: staff.person.id})">{{staff.person.name}}</a></h4>
+                        <h5 class="space-nowrap overflow-hidden">{{staff.character.name || '-'}}</h5>
+                    </tile>
+                </td>
+            </tr></table>
+        </div>
+    </div>
+</panel>

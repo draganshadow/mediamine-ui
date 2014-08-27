@@ -1,0 +1,18 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: #333333;
+}
+
+.random-background {
+  //  background-image: url("http://unsplash.it/g/1920/1080?random");
+  background-image: url("http://unsplash.it/g/960/540?random");
+  background-size: 1920px 1080px;
+}
+
+a {
+  cursor: pointer;
+}

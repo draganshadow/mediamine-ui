@@ -1,0 +1,32 @@
+<panel ng-cloak>
+    <panel-heading><h1>Modules</h1></panel-heading>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Version</th>
+                <th>Installed</th>
+                <th>Enabled</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="module in modules">
+                <td>{{module.id}}</td>
+                <td>{{module.name}}</td>
+                <td>{{module.version}}</td>
+                <td>{{module.installed}}</td>
+                <td>{{module.enabled}}</td>
+                <td>
+                    <div ng-if="!module.installed">
+                        <button type="button" class="btn btn-primary btn-xs" ng-click="install(module)">Install</button>
+                    </div>
+                    <div ng-if="module.installed && !module.enabled">
+                        <button type="button" class="btn btn-primary btn-xs">Enable</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</panel>

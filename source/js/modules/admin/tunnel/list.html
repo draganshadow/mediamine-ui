@@ -1,0 +1,30 @@
+<panel ng-cloak>
+    <panel-heading><h1>Tunnel</h1></panel-heading>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Key</th>
+            <th>Service</th>
+            <th>Enabled</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="tunnel in tunnels">
+            <td>{{tunnel.id}}</td>
+            <td>{{tunnel.key}}</td>
+            <td>{{tunnel.service}}</td>
+            <td>{{tunnel.enabled}}</td>
+            <td>
+                <div ng-if="!tunnel.enabled">
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="enable(tunnel)">Enable</button>
+                </div>
+                <div ng-if="tunnel.enabled">
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="disable(tunnel)">Disable</button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</panel>

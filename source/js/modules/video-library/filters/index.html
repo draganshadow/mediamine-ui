@@ -1,0 +1,18 @@
+<accordion close-others="{{false}}">
+    <accordion-group heading="Type">
+        <span ng-repeat="type in types track by $index"><span class="btn btn-primary btn-sm margin-bottom-xxs" ng-click="selectType(type)">{{type.name}}</span>{{$last ? '' : ' '}}</span>
+        <div class="clearfix"><a class="pull-right" ng-click="resetType()">reset</a></div>
+    </accordion-group>
+    <accordion-group heading="Genre">
+        <span ng-repeat="genre in genres"><span class="btn btn-primary btn-sm margin-bottom-xxs" ng-click="selectGenre(genre)">{{genre.name}}</span>{{$last ? '' : ' '}}</span>
+        <div class="clearfix"><a class="pull-right" ng-click="resetGenre()">reset</a></div>
+    </accordion-group>
+    <accordion-group heading="Year">
+    </accordion-group>
+    <accordion-group heading="Rating">
+    </accordion-group>
+    <accordion-group heading="Library">
+    </accordion-group>
+    <accordion-group heading="Viewed">
+    </accordion-group>
+</accordion>

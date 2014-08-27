@@ -1,0 +1,10 @@
+.tile-control {
+  margin-top: -40px;
+  float: left;
+}
+
+.dragging {
+  .tile-control {
+    display: none;
+  }
+}

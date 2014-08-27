@@ -1,0 +1,29 @@
+.frame {
+  height: 100%;
+  overflow: hidden;
+  padding-top: 50px;
+}
+
+.left-frame {
+  @extend .frame;
+  padding-top: 70px;
+}
+
+.main-frame {
+  @extend .frame;
+  padding-top: 50px;
+  padding-right: 0;
+  padding-left: 0;
+  .frame-content {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 20px;
+  }
+}
+
+.right-frame {
+  @extend .frame;
+  padding-left: 0;
+  padding-right: 0;
+}
