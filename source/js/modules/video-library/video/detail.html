@@ -5,18 +5,27 @@
         <div class="col-md-8 column">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Details
+                    {{ 'VIDEO_DETAILS' | translate }}
                 </div>
                 <div class="panel-body">
                     <ul>
-                        <li ng-repeat="staff in video.staffs | filter:{role:'!actor'}"><strong>{{staff.role.name}}: </strong>{{staff.person.name}}</li>
+                        <li ng-repeat="staff in video.staffs | filter:{role:'!actor'}"><strong>{{ staff.role | translate }}: </strong>{{staff.person.name}}</li>
                         <li>
-                            <strong>Genre: </strong><span ng-repeat="genre in video.genres"><span class="label label-default">{{genre.name}}</span>{{$last ? '' : ' '}}</span>
+                            <strong>{{ 'VIDEO_GENRES' | translate }}</strong> <span ng-repeat="genre in video.genres"><span class="label label-default">{{genre.name}}</span>{{$last ? '' : ' '}}</span>
                         </li>
                     </ul>
-                    <div class="btn-group">
-                        <a class="btn btn-primary" ng-click="$root.$emit('playlist.play', video)"><span class="glyphicon glyphicon-play"></span> Play</a>
-                        <a class="btn btn-default" type="button"><span class="glyphicon glyphicon-download"></span> Download</a>
+                    <a class="btn btn-primary" ng-click="$root.$emit('playlist.play', video)"><span class="glyphicon glyphicon-play"></span> {{ 'VIDEO_PLAY' | translate }}</a>
+
+                    <div class="btn-group" dropdown>
+                        <a class="btn btn-default" type="button" href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/300-' + video.files[0].file.pathKey + '.mp4'}}" download><span class="glyphicon glyphicon-download"></span> {{ 'VIDEO_DOWNLOAD' | translate }}</a>
+                        <button type="button" class="btn dropdown-toggle">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/150-' + video.files[0].file.pathKey + '.mp4'}}" download>mp4 (300)</a></li>
+                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/300-' + video.files[0].file.pathKey + '.mp4'}}" download>mp4 (500)</a></li>
+                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/500-' + video.files[0].file.pathKey + '.mp4'}}" download>mp4 (900)</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -24,7 +33,7 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            Summary
+            {{ 'VIDEO_SUMMARY' | translate }}
         </div>
         <div class="panel-body">
             {{video.summary}}
@@ -32,7 +41,7 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            Actors
+            {{ 'VIDEO_ACTORS' | translate }}
         </div>
         <div class="panel-body scroll-x">
             <table><tr>

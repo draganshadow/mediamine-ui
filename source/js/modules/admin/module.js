@@ -109,27 +109,27 @@ define([
                 class: 'navbar-right',
                 subItems: [
                     {
-                        label: 'Files',
+                        label: 'ADMIN_MENU_FILES',
                         sref: 'mediamine.admin.files'
                     },
                     {
-                        label: 'Modules',
+                        label: 'ADMIN_MENU_MODULES',
                         sref: 'mediamine.admin.module'
                     },
                     {
-                        label: 'Tunnels',
+                        label: 'ADMIN_MENU_TUNNELS',
                         sref: 'mediamine.admin.tunnel'
                     },
                     {
-                        label: 'Settings',
+                        label: 'ADMIN_MENU_SETTINGS',
                         sref: 'mediamine.admin.setting'
                     },
                     {
-                        label: 'Tasks',
+                        label: 'ADMIN_MENU_TASKS',
                         sref: 'mediamine.admin.task'
                     },
                     {
-                        label: 'Maintenance',
+                        label: 'ADMIN_MENU_MAINTENANCE',
                         sref: 'mediamine.admin.maintenance'
                     }
                 ]

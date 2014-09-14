@@ -5,7 +5,7 @@
         <div class="col-md-8 column">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Details
+                    {{ 'PERSON_DETAILS' | translate }}
                 </div>
                 <div class="panel-body">
                 </div>
@@ -15,7 +15,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            Summary
+            {{ 'PERSON_SUMMARY' | translate }}
         </div>
         <div class="panel-body">
             {{person.summary}}
@@ -24,7 +24,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            Videos
+            {{ 'PERSON_VIDEOS' | translate }}
         </div>
         <div class="panel-body scroll-x">
             <div class="col-sm-6 col-md-3 mb20" ng-repeat="video in person.videos">

@@ -1,7 +1,7 @@
-<panel heading="Search">
+<panel heading="{{ 'SEARCH' | translate }}">
     <div ng-include="'js/modules/search/widget/search.html'"></div>
 </panel>
-<panel heading="Recent Add">
+<panel heading="{{ 'RECENTLY_ADDED' | translate }}">
     <div class="panel-body width-100 scroll-x">
         <table><tr>
             <td class="valign-top" ng-repeat="video in recentVideos">

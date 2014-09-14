@@ -71,30 +71,6 @@ try {
   module = angular.module('ui.bootstrap.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('template/modal/backdrop.html',
-    '<div class="modal-backdrop fade" ng-class="{in: animate}" ng-style="{\'z-index\': 1040 + (index && 1 || 0) + index*10}"></div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('ui.bootstrap.partials');
-} catch (e) {
-  module = angular.module('ui.bootstrap.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('template/modal/window.html',
-    '<div tabindex="-1" role="dialog" class="modal fade" ng-class="{in: animate}" ng-style="{\'z-index\': 1050 + index*10, display: \'block\'}" ng-click="close($event)"><div class="modal-dialog" ng-class="{\'modal-sm\': size == \'sm\', \'modal-lg\': size == \'lg\'}"><div class="modal-content" ng-transclude=""></div></div></div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('ui.bootstrap.partials');
-} catch (e) {
-  module = angular.module('ui.bootstrap.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
   $templateCache.put('template/datepicker/datepicker.html',
     '<div ng-switch="datepickerMode" role="application" ng-keydown="keydown($event)"><daypicker ng-switch-when="day" tabindex="0"></daypicker><monthpicker ng-switch-when="month" tabindex="0"></monthpicker><yearpicker ng-switch-when="year" tabindex="0"></yearpicker></div>');
 }]);
@@ -145,6 +121,30 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('template/datepicker/year.html',
     '<table role="grid" aria-labelledby="{{uniqueId}}-title" aria-activedescendant="{{activeDateId}}"><thead><tr><th><button type="button" class="btn btn-default btn-sm pull-left" ng-click="move(-1)" tabindex="-1"><i class="glyphicon glyphicon-chevron-left"></i></button></th><th colspan="3"><button id="{{uniqueId}}-title" role="heading" aria-live="assertive" aria-atomic="true" type="button" class="btn btn-default btn-sm" ng-click="toggleMode()" tabindex="-1" style="width:100%;"><strong>{{title}}</strong></button></th><th><button type="button" class="btn btn-default btn-sm pull-right" ng-click="move(1)" tabindex="-1"><i class="glyphicon glyphicon-chevron-right"></i></button></th></tr></thead><tbody><tr ng-repeat="row in rows track by $index"><td ng-repeat="dt in row track by dt.date" class="text-center" role="gridcell" id="{{dt.uid}}" aria-disabled="{{!!dt.disabled}}"><button type="button" style="width:100%;" class="btn btn-default" ng-class="{\'btn-info\': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{\'text-info\': dt.current}">{{dt.label}}</span></button></td></tr></tbody></table>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('ui.bootstrap.partials');
+} catch (e) {
+  module = angular.module('ui.bootstrap.partials', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('template/modal/backdrop.html',
+    '<div class="modal-backdrop fade" ng-class="{in: animate}" ng-style="{\'z-index\': 1040 + (index && 1 || 0) + index*10}"></div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('ui.bootstrap.partials');
+} catch (e) {
+  module = angular.module('ui.bootstrap.partials', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('template/modal/window.html',
+    '<div tabindex="-1" role="dialog" class="modal fade" ng-class="{in: animate}" ng-style="{\'z-index\': 1050 + index*10, display: \'block\'}" ng-click="close($event)"><div class="modal-dialog" ng-class="{\'modal-sm\': size == \'sm\', \'modal-lg\': size == \'lg\'}"><div class="modal-content" ng-transclude=""></div></div></div>');
 }]);
 })();
 

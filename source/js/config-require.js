@@ -22,7 +22,8 @@ define({
         'restangular': 'vendor/restangular/dist/restangular',
         'showdown': 'vendor/showdown/src/showdown',
         'lodash': 'vendor/lodash/dist/lodash',
-        'projekktor': 'vendor/projekktor/dist/projekktor',
+        'projekktor': 'vendor/projekktor/dist/projekktor-universal',
+        'ngTranslate' : 'vendor/angular-translate/angular-translate',
         'app-partials'          : 'html2js/partials',
         'ui-bootstrap-partials' : 'html2js/ui.bootstrap.partials'
     },
@@ -43,6 +44,7 @@ define({
         'ui-bootstrap-buttons' : ['angular'],
         'ui-bootstrap-accordion' : ['angular', 'ui-bootstrap-collapse'],
         'app-partials'          : ['angular'],
-        'ui-bootstrap-partials' : ['angular']
+        'ui-bootstrap-partials' : ['angular'],
+        'ngTranslate' : ['angular']
     }
 });

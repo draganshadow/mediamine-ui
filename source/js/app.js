@@ -6,6 +6,7 @@ define([
     'angular',
     'ui.router',
     './config',
+    './translation',
     'restangular',
     'app-partials',
     'ui-bootstrap-partials',
@@ -21,6 +22,7 @@ define([
 
     return angular.module('app', [
             'app.constants',
+            'app.translation',
             'app.menu',
             'app.partials',
             'ui.bootstrap.partials',

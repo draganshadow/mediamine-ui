@@ -1,12 +1,12 @@
 define(['../module'], function (controllers) {
     'use strict';
     controllers.controller('AdminMaintenance', ['$scope', '$location', 'Restangular', function ($scope, $location, Restangular) {
-        $scope.actions = ['non_added_video_list'];
+        $scope.filters = ['non_added_video_list'];
 
         var getActions = function() {
             Restangular.all('library').getList()
                 .then(function(result) {
-                    $scope.actions = result.video_library;
+                    $scope.filters = result.video_library;
                 });
         };
         getActions();

@@ -1,13 +1,13 @@
 <panel ng-cloak>
-    <panel-heading><h1>Setting</h1></panel-heading>
+    <panel-heading><h1>{{ 'ADMIN_SETTING_TITLE' | translate }}</h1></panel-heading>
     <table class="table table-striped">
         <thead>
         <tr>
             <th>#</th>
-            <th>Group</th>
-            <th>Key</th>
-            <th>Value</th>
-            <th>Action</th>
+            <th>{{ 'ADMIN_SETTING_GROUP' | translate }}</th>
+            <th>{{ 'ADMIN_SETTING_KEY' | translate }}</th>
+            <th>{{ 'ADMIN_SETTING_VALUE' | translate }}</th>
+            <th>{{ 'ADMIN_SETTING_ACTION' | translate }}</th>
         </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@
             <td>{{setting.value}}</td>
             <td>
                 <div ng-if="setting.editable">
-                    <button type="button" class="btn btn-primary btn-xs" ng-click="edit(setting)">Edit</button>
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="edit(setting)">{{ 'ADMIN_SETTING_EDIT' | translate }}</button>
                 </div>
             </td>
         </tr>

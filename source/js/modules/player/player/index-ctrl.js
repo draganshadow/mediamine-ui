@@ -14,31 +14,35 @@ define(['../module', 'projekktor'], function (controllers) {
             $rootScope.$emit('player.play', data);
         };
 
-        projekktor('#main-player', {
-                platforms: ['browser', 'ios', 'native', 'flash'],
+        projekktor('#main_player', {
+                platforms: ['flash','browser'],
                 poster: $scope.image,
                 title: $scope.video.name,
-                playerFlashMP4: './vendor/projekktor/src/swf/jarisplayer.swf',
-                playerFlashMP3: './vendor/projekktor/src/swf/jarisplayer.swf',
+                playerFlashMP4: './vendor/projekktor/swf/StrobeMediaPlayback/StrobeMediaPlayback_hls_mss.swf',
+                playerFlashMP3: './vendor/projekktor/swf/StrobeMediaPlayback/StrobeMediaPlayback_hls_mss.swf',
                 width: 288,
                 height: 144,
-                enableFlashFallback:true,
-                playlist: []
+                enableFlashFallback:true
             }, function(player) {} // on ready
         );
 
-        projekktor('#main-player').addListener('state', function (state) {
+        projekktor('#main_player').addListener('state', function (state) {
+            console.log(state);
             if (state == 'COMPLETED') {
-                $rootScope.$emit('player.completed', projekktor('#main-player').getItemId());
+                $rootScope.$emit('player.completed', projekktor('#main_player').getItemId());
             }
         });
+
+        projekktor('#main_player').addListener('seek', function (state) {
+            console.log(state);
+        });
         var setVideo = function (video) {
-            projekktor('#main-player').setFile([
+            projekktor('#main_player').setFile([
                 {
-                    0: {src: $rootScope.config.serverUrl + 'stream/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.flv', type: 'video/flv'},
-//                    1: {src: "/master/mediamine-ui-2/source/vendor/projekktor/dist/media/intro.webm", type: "video/webm"},
-//                    2: {src: "/master/mediamine-ui-2/source/vendor/projekktor/dist/media/intro.mp4", type: "video/mp4"},
-//                    3: {src: "/master/mediamine-ui-2/source/vendor/projekktor/dist/media/intro.ogv", type: "video/ogg"},
+//                    0: {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.flv', type: 'video/flv'},
+//                    0: {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.mp4', type: "video/mp4"},
+                    0: {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.m3u8', type: "application/mpegURL"},
+//                    1: {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.webm', type: "video/webm"},
                     config: {
                         id: video.id
                     }
@@ -47,11 +51,17 @@ define(['../module', 'projekktor'], function (controllers) {
         };
 
         $rootScope.$on('player.set', function(event, arg) {
+            console.log('player.set');
             setVideo(arg);
         });
         $rootScope.$on('player.play', function(event, arg) {
+            console.log('player.play');
             setVideo(arg);
-            projekktor('#main-player').setPlay();
+            projekktor('#main_player').setPlay();
+//            projekktor('#main_player').setPause();
+//            setTimeout(function() {
+//                projekktor('#main_player').setPlay();
+//            }, 2000);
         });
 
 

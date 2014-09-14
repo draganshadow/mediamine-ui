@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="height-100" ng-drop="true" ng-drop-success="onDrop($data,$event)">
-            drop here
+            {{ 'PLAYER_DROP_HERE' | translate }}
         </div>
     </div>
 
@@ -16,6 +16,6 @@
         <div class="btn-group">
             <label ng-repeat="br in bitrates" class="btn btn-xs btn-default" ng-model="bitrate.value" btn-radio="br">{{br}}</label>
         </div>
-        <a ng-click="$root.$emit('playlist.clear')" class="pull-right"><span class="glyphicon glyphicon-signal"></span> </a>
+        <a ng-click="$root.$emit('playlist.clear')" class="pull-right" title="{{ 'PLAYER_CLEAR_LIST' | translate }}"><span class="glyphicon glyphicon-trash"></span> </a>
     </div>
 </div>

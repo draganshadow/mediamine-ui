@@ -42,7 +42,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/home/home.html',
-    '<panel heading="Search"><div ng-include="\'js/modules/search/widget/search.html\'"></div></panel><panel heading="Recent Add"><div class="panel-body width-100 scroll-x"><table><tr><td class="valign-top" ng-repeat="video in recentVideos"><div class="width-xl"><tile-video video="video"></tile-video></div></td></tr></table></div></panel><div ui-view=""></div>');
+    '<panel heading="{{ \'SEARCH\' | translate }}"><div ng-include="\'js/modules/search/widget/search.html\'"></div></panel><panel heading="{{ \'RECENTLY_ADDED\' | translate }}"><div class="panel-body width-100 scroll-x"><table><tr><td class="valign-top" ng-repeat="video in recentVideos"><div class="width-xl"><tile-video video="video"></tile-video></div></td></tr></table></div></panel><div ui-view=""></div>');
 }]);
 })();
 
@@ -54,7 +54,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/menu/menu.html',
-    '<nav class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="navbar-header"><a class="navbar-brand" href="#">MediaMine</a></div><div class="collapse navbar-collapse navbar-ex1-collapse"><ul class="nav navbar-nav navbar-right"><li><a></a></li></ul><div ng-repeat="item in menuItems"><div ng-if="item.type == \'link\'"><ul class="nav navbar-nav {{item.class}}"><li active-link="active"><a ng-if="item.sref" ui-sref="{{item.sref}}">{{item.label}}</a> <a ng-if="!item.sref" href="{{item.href}}">{{item.label}}</a></li></ul></div><div ng-if="item.type == \'partial\'" ng-include="item.templateUrl"></div><div ng-if="item.type == \'dropdown\'"><ul class="nav navbar-nav {{item.class}}"><li class="dropdown"><a class="dropdown-toggle">{{item.label}} <i class="caret"></i></a><ul class="dropdown-menu"><li ng-repeat="subItem in item.subItems"><a ng-if="subItem.sref" ui-sref="{{subItem.sref}}">{{subItem.label}}</a> <a ng-if="!subItem.sref" href="{{subItem.href}}">{{subItem.label}}</a></li></ul></li></ul></div></div></div></nav>');
+    '<nav class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="navbar-header"><a class="navbar-brand" href="#">MediaMine</a></div><div class="collapse navbar-collapse navbar-ex1-collapse"><ul class="nav navbar-nav navbar-right"><li><a></a></li></ul><div ng-repeat="item in menuItems"><div ng-if="item.type == \'link\'"><ul class="nav navbar-nav {{item.class}}"><li active-link="active"><a ng-if="item.sref" ui-sref="{{item.sref}}">{{ item.label | translate }}</a> <a ng-if="!item.sref" href="{{item.href}}">{{ item.label | translate }}</a></li></ul></div><div ng-if="item.type == \'partial\'" ng-include="item.templateUrl"></div><div ng-if="item.type == \'dropdown\'"><ul class="nav navbar-nav {{item.class}}"><li class="dropdown"><a class="dropdown-toggle">{{ item.label | translate }} <i class="caret"></i></a><ul class="dropdown-menu"><li ng-repeat="subItem in item.subItems"><a ng-if="subItem.sref" ui-sref="{{subItem.sref}}">{{ subItem.label | translate }}</a> <a ng-if="!subItem.sref" href="{{subItem.href}}">{{ subItem.label | translate }}</a></li></ul></li></ul></div></div></div></nav>');
 }]);
 })();
 
@@ -90,7 +90,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/files/main.html',
-    '<panel ng-cloak=""><panel-heading><h1>Folders and Files</h1></panel-heading><form class="form-horizontal" role="form"><div ng-repeat="path in paths" class="form-group"><label class="col-sm-2 control-label">Folders</label><div class="col-sm-10"><input ng-repeat="folder in path.valueObject track by $index" type="text" class="form-control margin-bottom-xs" placeholder="Enter path to your media folder" ng-model="folder.value"><button type="button" class="btn btn-link" ng-click="addFolder(path.valueObject)">add a folder</button></div></div><div class="form-group"><div class="col-sm-offset-2 col-sm-10"><button ng-click="save()" class="btn btn-primary btn-lg">Save</button><button ng-click="execute(\'scanFiles\')" class="btn btn-lg">Scan Files</button></div></div></form></panel><panel title="System Actions" ng-cloak=""><form class="form-horizontal" role="form"><div class="form-group"><div class="col-sm-offset-2 col-sm-10"><button ng-repeat="action in actions" ng-click="execute(action)" class="btn btn-default">{{action.name}}</button></div></div></form></panel>');
+    '<panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_FILES_TITLE\' | translate }}</h1></panel-heading><form class="form-horizontal" role="form"><div ng-repeat="path in paths" class="form-group"><label class="col-sm-2 control-label">{{ \'ADMIN_FILES_FOLDERS\' | translate }}</label><div class="col-sm-10"><input ng-repeat="folder in path.valueObject track by $index" type="text" class="form-control margin-bottom-xs" placeholder="Enter path to your media folder" ng-model="folder.value"><button type="button" class="btn btn-link" ng-click="addFolder(path.valueObject)">{{ \'ADMIN_FILES_ADD_FOLDER\' | translate }}</button></div></div><div class="form-group"><div class="col-sm-offset-2 col-sm-10"><button ng-click="save()" class="btn btn-primary btn-lg">{{ \'ADMIN_FILES_SAVE\' | translate }}</button><button ng-click="execute(\'scanFiles\')" class="btn btn-lg">{{ \'ADMIN_FILES_SCAN\' | translate }}</button></div></div></form></panel><panel title="System Actions" ng-cloak=""><form class="form-horizontal" role="form"><div class="form-group"><div class="col-sm-offset-2 col-sm-10"><button ng-repeat="action in actions" ng-click="execute(action.name)" class="btn btn-default">{{action.name}}</button></div></div></form></panel>');
 }]);
 })();
 
@@ -102,7 +102,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/maintenance/list.html',
-    '<panel ng-cloak=""><panel-heading><h1>Maintenance</h1></panel-heading><tabset><tab heading="{{action}}" ng-repeat="action in actions" ng-click="execute(action)"></tab></tabset><table class="table table-striped"><thead><tr><th>#</th><th>Name</th></tr></thead><tbody><tr ng-repeat="item in items"><td>{{item.id}}</td><td>{{item.name}}</td></tr></tbody></table></panel>');
+    '<panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_MAINTENANCE_TITLE\' | translate }}</h1></panel-heading><tabset><tab heading="{{ \'ADMIN_MAINTENANCE_FILTER_\' + filter | translate }}" ng-repeat="filter in filters" ng-click="execute(action)"></tab></tabset><table class="table table-striped"><thead><tr><th>#</th><th>{{ \'ADMIN_MAINTENANCE_NAME\' | translate }}</th></tr></thead><tbody><tr ng-repeat="item in items"><td>{{item.id}}</td><td>{{item.files[0].file.directory.path}}/<strong>{{item.files[0].file.name}}.{{item.files[0].file.extension}}</strong></td></tr></tbody></table></panel>');
 }]);
 })();
 
@@ -126,7 +126,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/module/list.html',
-    '<panel ng-cloak=""><panel-heading><h1>Modules</h1></panel-heading><table class="table table-striped"><thead><tr><th>#</th><th>Name</th><th>Version</th><th>Installed</th><th>Enabled</th><th>Action</th></tr></thead><tbody><tr ng-repeat="module in modules"><td>{{module.id}}</td><td>{{module.name}}</td><td>{{module.version}}</td><td>{{module.installed}}</td><td>{{module.enabled}}</td><td><div ng-if="!module.installed"><button type="button" class="btn btn-primary btn-xs" ng-click="install(module)">Install</button></div><div ng-if="module.installed && !module.enabled"><button type="button" class="btn btn-primary btn-xs">Enable</button></div></td></tr></tbody></table></panel>');
+    '<panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_MODULE_TITLE\' | translate }}</h1></panel-heading><table class="table table-striped"><thead><tr><th>#</th><th>{{ \'ADMIN_MODULE_NAME\' | translate }}</th><th>{{ \'ADMIN_MODULE_VERSION\' | translate }}</th><th>{{ \'ADMIN_MODULE_INSTALLED\' | translate }}</th><th>{{ \'ADMIN_MODULE_ENABLED\' | translate }}</th><th>{{ \'ADMIN_MODULE_ACTION\' | translate }}</th></tr></thead><tbody><tr ng-repeat="module in modules"><td>{{module.id}}</td><td>{{module.name}}</td><td>{{module.version}}</td><td>{{ \'ADMIN_MODULE_\' + module.installed | translate }}</td><td>{{ \'ADMIN_MODULE_\' + module.enabled | translate }}</td><td><div ng-if="!module.installed"><button type="button" class="btn btn-primary btn-xs" ng-click="install(module)">{{ \'ADMIN_MODULE_ACTION_INSTALL\' | translate }}</button></div><div ng-if="module.installed && !module.enabled"><button type="button" class="btn btn-primary btn-xs">{{ \'ADMIN_MODULE_ACTION_ENABLE\' | translate }}</button></div></td></tr></tbody></table></panel>');
 }]);
 })();
 
@@ -138,7 +138,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/setting/edit.html',
-    '<div class="modal-header"><h3 class="modal-title">Edit</h3></div><div class="modal-body"><div class="form-group"><label for="value">{{setting.groupKey}}/{{setting.key}}</label><input type="text" class="form-control" id="value" placeholder="Enter value" ng-model="setting.value"></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="ok()">OK</button><button class="btn btn-warning" ng-click="cancel()">Cancel</button></div>');
+    '<div class="modal-header"><h3 class="modal-title">{{ \'ADMIN_SETTING_EDIT_TITLE\' | translate }}</h3></div><div class="modal-body"><div class="form-group"><label for="value">{{setting.groupKey}}/{{setting.key}}</label><input type="text" class="form-control" id="value" placeholder="Enter value" ng-model="setting.value"></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="ok()">{{ \'ADMIN_SETTING_EDIT_SAVE\' | translate }}</button><button class="btn btn-warning" ng-click="cancel()">{{ \'ADMIN_SETTING_EDIT_CANCEL\' | translate }}</button></div>');
 }]);
 })();
 
@@ -150,7 +150,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/setting/list.html',
-    '<panel ng-cloak=""><panel-heading><h1>Setting</h1></panel-heading><table class="table table-striped"><thead><tr><th>#</th><th>Group</th><th>Key</th><th>Value</th><th>Action</th></tr></thead><tbody><tr ng-repeat="setting in settings"><td>{{setting.id}}</td><td>{{setting.groupKey}}</td><td>{{setting.key}}</td><td>{{setting.value}}</td><td><div ng-if="setting.editable"><button type="button" class="btn btn-primary btn-xs" ng-click="edit(setting)">Edit</button></div></td></tr></tbody></table></panel>');
+    '<panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_SETTING_TITLE\' | translate }}</h1></panel-heading><table class="table table-striped"><thead><tr><th>#</th><th>{{ \'ADMIN_SETTING_GROUP\' | translate }}</th><th>{{ \'ADMIN_SETTING_KEY\' | translate }}</th><th>{{ \'ADMIN_SETTING_VALUE\' | translate }}</th><th>{{ \'ADMIN_SETTING_ACTION\' | translate }}</th></tr></thead><tbody><tr ng-repeat="setting in settings"><td>{{setting.id}}</td><td>{{setting.groupKey}}</td><td>{{setting.key}}</td><td>{{setting.value}}</td><td><div ng-if="setting.editable"><button type="button" class="btn btn-primary btn-xs" ng-click="edit(setting)">{{ \'ADMIN_SETTING_EDIT\' | translate }}</button></div></td></tr></tbody></table></panel>');
 }]);
 })();
 
@@ -162,7 +162,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/tasks/main.html',
-    '<panel ng-cloak=""><panel-heading><h1>Tasks</h1></panel-heading><tabset><tab heading="Running"></tab></tabset><p><button type="button" class="btn btn-primary btn-xs pull-right margin-top-xs" ng-click="refreshList()">Refresh</button></p><table class="table table-striped"><thead><tr><th>Group</th><th>Key</th><th>Status</th><th>Status</th></tr></thead><tbody><tr ng-repeat="task in tasks"><td>{{task.groupKey}}</td><td>{{task.key}}</td><td>{{task.barLabel}}</td><td><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="{{task.percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{task.percent}}%;">{{task.percent}}%</div></div></td></tr></tbody></table></panel>');
+    '<panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_TASKS_TITLE\' | translate }}</h1></panel-heading><tabset><tab heading="{{ \'ADMIN_TASKS_RUNNING\' | translate }}"></tab></tabset><p><button type="button" class="btn btn-primary btn-xs pull-right margin-top-xs" ng-click="refreshList()">{{ \'ADMIN_TASKS_REFRESH\' | translate }}</button></p><table class="table table-striped"><thead><tr><th>{{ \'ADMIN_TASKS_GROUP\' | translate }}</th><th>{{ \'ADMIN_TASKS_KEY\' | translate }}</th><th>{{ \'ADMIN_TASKS_PROGRESS\' | translate }}</th><th></th></tr></thead><tbody><tr ng-repeat="task in tasks"><td>{{task.groupKey}}</td><td>{{task.key}}</td><td>{{task.barLabel}}</td><td><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="{{task.percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{task.percent}}%;">{{task.percent}}%</div></div></td></tr></tbody></table></panel>');
 }]);
 })();
 
@@ -174,19 +174,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/tunnel/list.html',
-    '<panel ng-cloak=""><panel-heading><h1>Tunnel</h1></panel-heading><table class="table table-striped"><thead><tr><th>#</th><th>Key</th><th>Service</th><th>Enabled</th><th>Action</th></tr></thead><tbody><tr ng-repeat="tunnel in tunnels"><td>{{tunnel.id}}</td><td>{{tunnel.key}}</td><td>{{tunnel.service}}</td><td>{{tunnel.enabled}}</td><td><div ng-if="!tunnel.enabled"><button type="button" class="btn btn-primary btn-xs" ng-click="enable(tunnel)">Enable</button></div><div ng-if="tunnel.enabled"><button type="button" class="btn btn-primary btn-xs" ng-click="disable(tunnel)">Disable</button></div></td></tr></tbody></table></panel>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('app.partials');
-} catch (e) {
-  module = angular.module('app.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('js/modules/player/control/index.html',
-    '<accordion close-others="{{false}}"><accordion-group heading="Genre"><span ng-repeat="genre in genres"><span class="btn btn-primary btn-sm margin-bottom-xxs" ng-click="$root.search.genre = genre.name">{{genre.name}}</span>{{$last ? \'\' : \' \'}}</span></accordion-group><accordion-group heading="Year"></accordion-group><accordion-group heading="Rating"></accordion-group><accordion-group heading="Library"></accordion-group><accordion-group heading="Viewed"></accordion-group></accordion>');
+    '<panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_TUNNEL_TITLE\' | translate }}</h1></panel-heading><table class="table table-striped"><thead><tr><th>#</th><th>{{ \'ADMIN_TUNNEL_KEY\' | translate }}</th><th>{{ \'ADMIN_TUNNEL_SERVICE\' | translate }}</th><th>{{ \'ADMIN_TUNNEL_ENABLED\' | translate }}</th><th>{{ \'ADMIN_TUNNEL_TITLE\' | translate }}</th></tr></thead><tbody><tr ng-repeat="tunnel in tunnels"><td>{{tunnel.id}}</td><td>{{tunnel.key}}</td><td>{{tunnel.service}}</td><td>{{ \'ADMIN_TUNNEL_\' + tunnel.enabled | translate }}</td><td><div ng-if="!tunnel.enabled"><button type="button" class="btn btn-primary btn-xs" ng-click="enable(tunnel)">{{ \'ADMIN_TUNNEL_ACTION_ENABLE\' | translate }}</button></div><div ng-if="tunnel.enabled"><button type="button" class="btn btn-primary btn-xs" ng-click="disable(tunnel)">{{ \'ADMIN_TUNNEL_ACTION_DISABLE\' | translate }}</button></div></td></tr></tbody></table></panel>');
 }]);
 })();
 
@@ -198,7 +186,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/player/player/index.html',
-    '<div class="side-panel side-panel-right height-100" ng-drop="true" ng-drop-success="onDropComplete($data,$event)"><div id="main-player" class="projekktor center-block height-100 width-100"></div></div>');
+    '<div class="side-panel side-panel-right height-100" ng-drop="true" ng-drop-success="onDropComplete($data,$event)"><div id="main_player" class="projekktor center-block height-100 width-100"></div></div>');
 }]);
 })();
 
@@ -210,19 +198,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/player/playlist/index.html',
-    '<div class="side-panel side-panel-right last-panel height-100"><div class="panel-body playlist-body scroll-y"><div class="playlist"><div ng-repeat="item in playlist track by $index" ng-drop="true" ng-drop-success="onReorder($index, $data, $event)"><div ng-drag="true" ng-drag-data="item" class="panel panel-default" ng-drag-success="onMoved($index, $data, $event)"><span>{{item.name}}</span> <a ng-prevent-drag="" class="pull-right" ng-click="$root.$emit(\'playlist.remove\', $index)"><span class="glyphicon glyphicon-remove"></span></a></div></div></div><div class="height-100" ng-drop="true" ng-drop-success="onDrop($data,$event)">drop here</div></div><div class="playlist-footer"><div class="btn-group"><label ng-repeat="br in bitrates" class="btn btn-xs btn-default" ng-model="bitrate.value" btn-radio="br">{{br}}</label></div><a ng-click="$root.$emit(\'playlist.clear\')" class="pull-right"><span class="glyphicon glyphicon-signal"></span></a></div></div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('app.partials');
-} catch (e) {
-  module = angular.module('app.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('js/modules/player/video/detail.html',
-    '<panel title="{{video.name}} ({{video.year}})" ng-show="video" ng-cloak=""><div class="row clearfix"><div class="col-md-4 column"><img ng-src="{{$root.config.serverUrl}}images/400-400-{{video.images[0].pathKey}}.jpg" class="thumbnail img-rounded"></div><div class="col-md-8 column"><div class="panel panel-default"><div class="panel-heading">Details</div><div class="panel-body"><ul><li ng-repeat="staff in video.staffs | filter:{role:\'!actor\'}"><strong>{{staff.role.name}}:</strong>{{staff.person.name}}</li><li><strong>Genre:</strong><span ng-repeat="genre in video.genres"><span class="label label-default">{{genre.name}}</span>{{$last ? \'\' : \' \'}}</span></li></ul><div class="btn-group"><a class="btn btn-primary" go-to="player"><span class="glyphicon glyphicon-play"></span> Play</a> <a class="btn btn-default" type="button"><span class="glyphicon glyphicon-download"></span> Download</a></div></div></div></div></div><div class="row clearfix"><div class="col-md-12 column"><div class="panel panel-default"><div class="panel-heading">Summary</div><div class="panel-body">{{video.summary}}</div></div></div></div><div class="row clearfix"><div class="col-md-12 column"><div class="panel panel-default"><div class="panel-heading">Actors</div><div class="panel-body scrollX"><table><tr><td class="pa2 vTop" ng-repeat="staff in video.staffs | filter:{role:\'actor\'}"><div class="thumbnail w200p"><img class="h200p" ng-src="{{$root.config.serverUrl}}images/200-200-{{video.images[0].pathKey}}.jpg" alt="{{staff.person.name}}"><div class="caption"><h4><a href="#/person/{{staff.person.id}}">{{staff.person.name}}</a></h4><h5>{{staff.character.name}}</h5></div></div></td></tr></table></div></div></div></div><div class="row clearfix"><div class="col-md-12 column"><div class="panel panel-default"><div id="player" class="panel-heading">Player<div class="right">Bitrate:<select ng-model="player.bitrate"><option ng-repeat="bitrate in bitrates">{{bitrate}}</option></select><a href="stream/{{player.bitrate}}-{{video.files[0].file.pathKey}}.flv"><span class="glyphicon glyphicon-download"></span></a></div></div><div class="panel-body"><div id="player_a" class="projekktor center-block"></div></div></div></div></div></panel>');
+    '<div class="side-panel side-panel-right last-panel height-100"><div class="panel-body playlist-body scroll-y"><div class="playlist"><div ng-repeat="item in playlist track by $index" ng-drop="true" ng-drop-success="onReorder($index, $data, $event)"><div ng-drag="true" ng-drag-data="item" class="panel panel-default" ng-drag-success="onMoved($index, $data, $event)"><span>{{item.name}}</span> <a ng-prevent-drag="" class="pull-right" ng-click="$root.$emit(\'playlist.remove\', $index)"><span class="glyphicon glyphicon-remove"></span></a></div></div></div><div class="height-100" ng-drop="true" ng-drop-success="onDrop($data,$event)">{{ \'PLAYER_DROP_HERE\' | translate }}</div></div><div class="playlist-footer"><div class="btn-group"><label ng-repeat="br in bitrates" class="btn btn-xs btn-default" ng-model="bitrate.value" btn-radio="br">{{br}}</label></div><a ng-click="$root.$emit(\'playlist.clear\')" class="pull-right" title="{{ \'PLAYER_CLEAR_LIST\' | translate }}"><span class="glyphicon glyphicon-trash"></span></a></div></div>');
 }]);
 })();
 
@@ -246,7 +222,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/search/widget/menu-search.html',
-    '<div ng-controller="SearchWidget"><form class="navbar-form navbar-right" role="search"><div class="form-group"><input type="text" class="form-control" ng-model="text" placeholder="Movie, Serie, Actor ..."></div><button type="submit" class="btn btn-default" ng-click="search()">Search</button></form></div>');
+    '<div ng-controller="SearchWidget"><form class="navbar-form navbar-right" role="search"><div class="form-group"><input type="text" class="form-control" ng-model="text" placeholder="{{ \'SEARCH_PH\' | translate }}"></div><button type="submit" class="btn btn-default" ng-click="search()">{{ \'SEARCH_B\' | translate }}</button></form></div>');
 }]);
 })();
 
@@ -258,7 +234,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/search/widget/search.html',
-    '<div ng-controller="SearchWidget"><form role="search"><div class="form-group"><input type="text" class="form-control" ng-model="text" placeholder="Movie, Serie, Actor ..."></div><button type="submit" class="btn btn-default" ng-click="search()">Search</button></form></div>');
+    '<div ng-controller="SearchWidget"><form role="search"><div class="form-group"><input type="text" class="form-control" ng-model="text" placeholder="{{ \'SEARCH_PH\' | translate }}"></div><button type="submit" class="btn btn-default" ng-click="search()">{{ \'SEARCH_B\' | translate }}</button></form></div>');
 }]);
 })();
 
@@ -330,7 +306,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/video-library/filters/index.html',
-    '<accordion close-others="{{false}}"><accordion-group heading="Type"><span ng-repeat="type in types track by $index"><span class="btn btn-primary btn-sm margin-bottom-xxs" ng-click="selectType(type)">{{type.name}}</span>{{$last ? \'\' : \' \'}}</span><div class="clearfix"><a class="pull-right" ng-click="resetType()">reset</a></div></accordion-group><accordion-group heading="Genre"><span ng-repeat="genre in genres"><span class="btn btn-primary btn-sm margin-bottom-xxs" ng-click="selectGenre(genre)">{{genre.name}}</span>{{$last ? \'\' : \' \'}}</span><div class="clearfix"><a class="pull-right" ng-click="resetGenre()">reset</a></div></accordion-group><accordion-group heading="Year"></accordion-group><accordion-group heading="Rating"></accordion-group><accordion-group heading="Library"></accordion-group><accordion-group heading="Viewed"></accordion-group></accordion>');
+    '<accordion close-others="{{false}}"><accordion-group heading="{{ \'FILTER_TYPE\' | translate }}"><span ng-repeat="type in types track by $index"><span class="btn btn-primary btn-sm margin-bottom-xxs" ng-click="selectType(type)">{{type.name}}</span>{{$last ? \'\' : \' \'}}</span><div class="clearfix"><a class="pull-right" ng-click="resetType()">{{ \'RESET\' | translate }}</a></div></accordion-group><accordion-group heading="{{ \'FILTER_GENRE\' | translate }}"><span ng-repeat="genre in genres"><span class="btn btn-primary btn-sm margin-bottom-xxs" ng-click="selectGenre(genre)">{{genre.name}}</span>{{$last ? \'\' : \' \'}}</span><div class="clearfix"><a class="pull-right" ng-click="resetGenre()">{{ \'RESET\' | translate }}</a></div></accordion-group><accordion-group heading="{{ \'FILTER_YEAR\' | translate }}"></accordion-group><accordion-group heading="{{ \'FILTER_RATING\' | translate }}"></accordion-group><accordion-group heading="{{ \'FILTER_LIBRARY\' | translate }}"></accordion-group><accordion-group heading="{{ \'FILTER_VIEWED\' | translate }}"></accordion-group></accordion>');
 }]);
 })();
 
@@ -342,7 +318,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/video-library/person/detail.html',
-    '<panel ng-show="person" ng-cloak=""><panel-heading><h1>{{person.name}}</h1></panel-heading><div class="row clearfix"><div class="col-md-4 column"><img ng-src="{{person.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'portrait\'}}" class="thumbnail img-rounded"></div><div class="col-md-8 column"><div class="panel panel-default"><div class="panel-heading">Details</div><div class="panel-body"></div></div></div></div><div class="panel panel-default"><div class="panel-heading">Summary</div><div class="panel-body">{{person.summary}}</div></div><div class="panel panel-default"><div class="panel-heading">Videos</div><div class="panel-body scroll-x"><div class="col-sm-6 col-md-3 mb20" ng-repeat="video in person.videos"><tile-video video="video"></tile-video></div></div></div></panel>');
+    '<panel ng-show="person" ng-cloak=""><panel-heading><h1>{{person.name}}</h1></panel-heading><div class="row clearfix"><div class="col-md-4 column"><img ng-src="{{person.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'portrait\'}}" class="thumbnail img-rounded"></div><div class="col-md-8 column"><div class="panel panel-default"><div class="panel-heading">{{ \'PERSON_DETAILS\' | translate }}</div><div class="panel-body"></div></div></div></div><div class="panel panel-default"><div class="panel-heading">{{ \'PERSON_SUMMARY\' | translate }}</div><div class="panel-body">{{person.summary}}</div></div><div class="panel panel-default"><div class="panel-heading">{{ \'PERSON_VIDEOS\' | translate }}</div><div class="panel-body scroll-x"><div class="col-sm-6 col-md-3 mb20" ng-repeat="video in person.videos"><tile-video video="video"></tile-video></div></div></div></panel>');
 }]);
 })();
 
@@ -390,7 +366,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/video-library/video/detail.html',
-    '<panel ng-show="video" ng-cloak=""><panel-heading><h1>{{video.name}}<span ng-if="video.year">({{video.year}})</span></h1></panel-heading><div class="row clearfix"><div class="col-md-4 column"><img ng-src="{{video.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'video\': \'hrbox_ffffff\'}}" class="thumbnail img-rounded"></div><div class="col-md-8 column"><div class="panel panel-default"><div class="panel-heading">Details</div><div class="panel-body"><ul><li ng-repeat="staff in video.staffs | filter:{role:\'!actor\'}"><strong>{{staff.role.name}}:</strong>{{staff.person.name}}</li><li><strong>Genre:</strong><span ng-repeat="genre in video.genres"><span class="label label-default">{{genre.name}}</span>{{$last ? \'\' : \' \'}}</span></li></ul><div class="btn-group"><a class="btn btn-primary" ng-click="$root.$emit(\'playlist.play\', video)"><span class="glyphicon glyphicon-play"></span> Play</a> <a class="btn btn-default" type="button"><span class="glyphicon glyphicon-download"></span> Download</a></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading">Summary</div><div class="panel-body">{{video.summary}}</div></div><div class="panel panel-default"><div class="panel-heading">Actors</div><div class="panel-body scroll-x"><table><tr><td class="valign-top" ng-repeat="staff in video.staffs | filter:{role:\'actor\'}"><tile tile-class="width-xl margin-right-xs" image="{{person.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'portrait\' : \'hrbox_ffffff\'}}" image-height="xl" title="{{staff.person.name}}" index="$index"><h4 class="space-nowrap overflow-hidden"><a ui-sref="mediamine.videolib.person({id: staff.person.id})">{{staff.person.name}}</a></h4><h5 class="space-nowrap overflow-hidden">{{staff.character.name || \'-\'}}</h5></tile></td></tr></table></div></div></panel>');
+    '<panel ng-show="video" ng-cloak=""><panel-heading><h1>{{video.name}}<span ng-if="video.year">({{video.year}})</span></h1></panel-heading><div class="row clearfix"><div class="col-md-4 column"><img ng-src="{{video.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'video\': \'hrbox_ffffff\'}}" class="thumbnail img-rounded"></div><div class="col-md-8 column"><div class="panel panel-default"><div class="panel-heading">{{ \'VIDEO_DETAILS\' | translate }}</div><div class="panel-body"><ul><li ng-repeat="staff in video.staffs | filter:{role:\'!actor\'}"><strong>{{ staff.role | translate }}:</strong>{{staff.person.name}}</li><li><strong>{{ \'VIDEO_GENRES\' | translate }}</strong> <span ng-repeat="genre in video.genres"><span class="label label-default">{{genre.name}}</span>{{$last ? \'\' : \' \'}}</span></li></ul><a class="btn btn-primary" ng-click="$root.$emit(\'playlist.play\', video)"><span class="glyphicon glyphicon-play"></span> {{ \'VIDEO_PLAY\' | translate }}</a><div class="btn-group" dropdown=""><a class="btn btn-default" type="button" href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/300-\' + video.files[0].file.pathKey + \'.mp4\'}}" download=""><span class="glyphicon glyphicon-download"></span> {{ \'VIDEO_DOWNLOAD\' | translate }}</a><button type="button" class="btn dropdown-toggle"><span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/150-\' + video.files[0].file.pathKey + \'.mp4\'}}" download="">mp4 (300)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/300-\' + video.files[0].file.pathKey + \'.mp4\'}}" download="">mp4 (500)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/500-\' + video.files[0].file.pathKey + \'.mp4\'}}" download="">mp4 (900)</a></li></ul></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading">{{ \'VIDEO_SUMMARY\' | translate }}</div><div class="panel-body">{{video.summary}}</div></div><div class="panel panel-default"><div class="panel-heading">{{ \'VIDEO_ACTORS\' | translate }}</div><div class="panel-body scroll-x"><table><tr><td class="valign-top" ng-repeat="staff in video.staffs | filter:{role:\'actor\'}"><tile tile-class="width-xl margin-right-xs" image="{{person.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'portrait\' : \'hrbox_ffffff\'}}" image-height="xl" title="{{staff.person.name}}" index="$index"><h4 class="space-nowrap overflow-hidden"><a ui-sref="mediamine.videolib.person({id: staff.person.id})">{{staff.person.name}}</a></h4><h5 class="space-nowrap overflow-hidden">{{staff.character.name || \'-\'}}</h5></tile></td></tr></table></div></div></panel>');
 }]);
 })();
 

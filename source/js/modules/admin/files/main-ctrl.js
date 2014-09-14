@@ -51,16 +51,19 @@ define(['../module'], function (controllers) {
         };
 
 
-
+        var actionMap = {};
         var getActions = function() {
             Restangular.all('action').getList()
                 .then(function(result) {
                     $scope.actions = result;
+                    angular.forEach($scope.actions, function (action) {
+                        actionMap[action.name] = action;
+                    });
                 });
         };
         getActions();
-        var executeActions = function(action) {
-            action.post('execute', {action:action.name})
+        var executeActions = function(actionName) {
+            actionMap[actionName].post('execute', {action:actionName})
                 .then(function(result) {
                     alert('EXECUTED');
                 });

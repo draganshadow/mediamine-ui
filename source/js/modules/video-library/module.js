@@ -95,13 +95,13 @@ define([
             menuManagerProvider.registerEntry({
                 type: 'link',
                 order: 0,
-                label: 'Movies',
+                label: 'MENU_MOVIES',
                 sref: 'mediamine.videolib.videos'
             });
             menuManagerProvider.registerEntry({
                 type: 'link',
                 order: 0,
-                label: 'Series',
+                label: 'MENU_SERIES',
                 sref: 'mediamine.videolib.series'
             });
         }]);

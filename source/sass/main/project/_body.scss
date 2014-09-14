@@ -1,17 +1,25 @@
 html {
   height: 100%;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
-
 body {
   height: 100%;
   background-color: #333333;
 }
 
+
+
 .random-background {
-  //  background-image: url("http://unsplash.it/g/1920/1080?random");
-  background-image: url("http://unsplash.it/g/960/540?random");
+  background-image: url("http://unsplash.it/g/1920/1080?random");
   background-size: 1920px 1080px;
+  @media screen and (max-device-width: 1080px) {
+      background-image: url("http://unsplash.it/g/640/480?random");
+    background-size: 1920px 1080px;
+  }
 }
+
+
 
 a {
   cursor: pointer;
