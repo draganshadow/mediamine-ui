@@ -11,12 +11,21 @@ body {
 
 
 .random-background {
-  background-image: url("http://unsplash.it/g/1920/1080?random");
-  background-size: 1920px 1080px;
-  @media screen and (max-device-width: 1080px) {
-      background-image: url("http://unsplash.it/g/640/480?random");
+
+  @media (min-width: $screen-sm-min) {
+  }
+  @media (min-width: $screen-md-min) {
+    background-image: url("http://unsplash.it/g/1920/1080?random");
     background-size: 1920px 1080px;
   }
+  @media (min-width: $screen-lg-min) {
+    background-image: url("http://unsplash.it/g/1920/1080?random");
+    background-size: 1920px 1080px;
+  }
+//  @media screen and (max-device-width: 1080px) {
+//    background-image: url("http://unsplash.it/g/640/480?random");
+//    background-size: 1920px 1080px;
+//  }
 }
 
 
