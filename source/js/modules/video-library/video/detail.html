@@ -1,8 +1,8 @@
 <panel ng-show="video" ng-cloak>
     <panel-heading><h1>{{video.name}}<span ng-if="video.year"> ({{video.year}})</span></h1></panel-heading>
     <div class="row clearfix">
-        <div class="col-md-4 column"><img ng-src="{{video.images[0].pathKey | imagePath : 300 : 400 : 'jpg' : 'hrbox' : 'video': 'hrbox_ffffff'}}" class="thumbnail img-rounded"></div>
-        <div class="col-md-8 column">
+        <div class="col-xs-4 col-sm-4 col-md-4 column overflow-hidden"><img ng-src="{{video.images[0].pathKey | imagePath : 300 : 400 : 'jpg' : 'hrbox' : 'video': 'hrbox_ffffff'}}" class="thumbnail img-rounded"></div>
+        <div class="col-xs-8 col-sm-8 col-md-8 column">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     {{ 'VIDEO_DETAILS' | translate }}
@@ -22,9 +22,12 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/150-' + video.files[0].file.pathKey + '.mp4'}}" download>mp4 (300)</a></li>
-                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/300-' + video.files[0].file.pathKey + '.mp4'}}" download>mp4 (500)</a></li>
-                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/500-' + video.files[0].file.pathKey + '.mp4'}}" download>mp4 (900)</a></li>
+                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/150-' + video.files[0].file.pathKey + '.mp4'}}" download>mp4 (150)</a></li>
+                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/300-' + video.files[0].file.pathKey + '.mp4'}}" download>mp4 (300)</a></li>
+                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/600-' + video.files[0].file.pathKey + '.mp4'}}" download>mp4 (600)</a></li>
+                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/150-' + video.files[0].file.pathKey + '.flv'}}" download>flv (150)</a></li>
+                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/300-' + video.files[0].file.pathKey + '.flv'}}" download>flv (300)</a></li>
+                            <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/600-' + video.files[0].file.pathKey + '.flv'}}" download>flv (600)</a></li>
                         </ul>
                     </div>
                 </div>

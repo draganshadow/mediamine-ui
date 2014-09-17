@@ -21,13 +21,13 @@ define([
                 .registerView('right', 'videoPlayer',
                 {
                     templateUrl: 'js/modules/player/player/index.html',
-                    class: 'height-30',
+                    class: 'player-panel',
                     controller: 'Player'
                 });
             moduleManagerProvider.registerView('right', 'videoPlaylist',
                 {
                     templateUrl: 'js/modules/player/playlist/index.html',
-                    class: 'height-70',
+                    class: 'playlist-panel',
                     controller: 'Playlist'
                 });
         }]);

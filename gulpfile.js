@@ -165,8 +165,8 @@ gulp.task('sass', function () {
             require: [
                 './source/sass/sass_extensions.rb',
                 'sass-globbing'
-            ],
-            style: 'compressed'
+            ]//,
+            //style: 'compressed'
         }).on('error', handleError))
         .pipe(autoprefix().on('error', handleError))
         .pipe(gulp.dest('source/assets/css'));
@@ -186,7 +186,7 @@ gulp.task('protractor-ci', function () {
 gulp.task('webdriver', webdriver);
 
 // Watch
-gulp.task('watch', ['sass', 'karma'], function () {
+gulp.task('watch', [], function () {
     gulp.watch('source/sass/**/*.scss', function () {
         gulp.run('sass');
     });
