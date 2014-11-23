@@ -12,11 +12,11 @@ define([
 
     return angular.module('app.admin', [
     'app.constants',
-            'app.core',
-            'app.ui',
+    'app.core',
+    'app.ui',
     'ui.router',
-            'ui.bootstrap.modal',
-            'ui.bootstrap.tabs',
+    'ui.bootstrap.modal',
+    'ui.bootstrap.tabs',
     'restangular'
     ]).config(['$stateProvider', 'moduleManagerProvider', 'menuManagerProvider', function ($stateProvider, moduleManagerProvider, menuManagerProvider) {
         $stateProvider
@@ -38,11 +38,29 @@ define([
                     }
                 }
             })
+            .state('mediamine.admin.library', {
+                url: '/library',
+                views: {
+                    "": {
+                        templateUrl: 'js/modules/admin/library/list.html',
+                        controller: 'AdminLibrary'
+                    }
+                }
+            })
             .state('mediamine.admin.maintenance', {
                 url: '/maintenance',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/maintenance/list.html',
+                        templateUrl: 'js/modules/admin/maintenance/main.html',
+                        controller: 'AdminMaintenance'
+                    }
+                }
+            })
+            .state('mediamine.admin.maintenance.install', {
+                url: '/maintenance/install',
+                views: {
+                    "": {
+                        templateUrl: 'js/modules/admin/maintenance/main.html',
                         controller: 'AdminMaintenance'
                     }
                 }
@@ -83,12 +101,12 @@ define([
                     }
                 }
             })
-            .state('mediamine.admin.task', {
-                url: '/tasks',
+            .state('mediamine.admin.job', {
+                url: '/jobs',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/tasks/main.html',
-                        controller: 'AdminTasksMain'
+                        templateUrl: 'js/modules/admin/jobs/main.html',
+                        controller: 'AdminJobsMain'
                     }
                 }
             })
@@ -126,7 +144,7 @@ define([
                     },
                     {
                         label: 'ADMIN_MENU_TASKS',
-                        sref: 'mediamine.admin.task'
+                        sref: 'mediamine.admin.job'
                     },
                     {
                         label: 'ADMIN_MENU_MAINTENANCE',

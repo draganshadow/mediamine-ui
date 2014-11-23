@@ -46,6 +46,9 @@ define([
             angular.extend(viewConfig, moduleManagerProvider.getViewConfigs());
             $stateProvider
                 .state('mediamine', {
+                    resolve: {
+                        settings: 'SettingService'
+                    },
                     abstract: true,
                     url: '/mediamine',
                     views: viewConfig

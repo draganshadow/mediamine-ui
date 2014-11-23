@@ -17,7 +17,7 @@ define(['../module'], function (controllers) {
 
             var loadMore = function() {
                 appCache.put('videoListParam', params);
-                Restangular.all('video').getList(params)
+                Restangular.all('videos').getList(params)
                     .then(function(result) {
                         $scope.videos = $scope.videos.concat(result);
                     });
@@ -31,7 +31,7 @@ define(['../module'], function (controllers) {
                 params.page = 1;
                 params.genre = genre ? genre.name : null;
                 appCache.put('videoListParam', params);
-                Restangular.all('video').getList(params)
+                Restangular.all('videos').getList(params)
                     .then(function(result) {
                         $scope.videos = result;
                     });
@@ -41,7 +41,7 @@ define(['../module'], function (controllers) {
                 params.page = 1;
                 params.type = type ? type.name : null;
                 appCache.put('videoListParam', params);
-                Restangular.all('video').getList(params)
+                Restangular.all('videos').getList(params)
                     .then(function(result) {
                         $scope.videos = result;
                     });

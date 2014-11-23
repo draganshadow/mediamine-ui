@@ -19,7 +19,7 @@ define(['../module'], function (controllers) {
         };
 
         $rootScope.$on('playlist.play', function(event, arg) {
-            Restangular.one('video', arg.id).get()
+            Restangular.one('videos', arg.id).get()
                 .then(function(result) {
                     $scope.playlist.unshift(result);
                     $rootScope.$emit('player.play', $scope.playlist[0]);
@@ -39,7 +39,7 @@ define(['../module'], function (controllers) {
 
         $rootScope.$on('playlist.add', function(event, arg) {
             if (arg) {
-                Restangular.one('video', arg.id).get()
+                Restangular.one('videos', arg.id).get()
                     .then(function(result) {
                         if ($scope.playlist.length === 0) {
                             $scope.playlist.push(result);

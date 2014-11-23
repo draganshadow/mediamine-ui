@@ -2,7 +2,7 @@ define(['../module'], function (controllers) {
     'use strict';
     controllers.controller('AdminTunnelList', ['$scope', '$location', 'Restangular', function ($scope, $location, Restangular) {
         var refreshList = function() {
-            Restangular.all('tunnel').getList()
+            Restangular.all('tunnels').getList()
                 .then(function(result) {
                     $scope.tunnels = result;
                 });

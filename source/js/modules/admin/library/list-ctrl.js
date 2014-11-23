@@ -1,6 +1,6 @@
 define(['../module'], function (controllers) {
     'use strict';
-    controllers.controller('AdminMaintenance', ['$scope', '$location', 'Restangular', function ($scope, $location, Restangular) {
+    controllers.controller('AdminLibrary', ['$scope', '$location', 'Restangular', function ($scope, $location, Restangular) {
         $scope.filters = ['non_added_video_list'];
 
         var getActions = function() {

@@ -9,8 +9,8 @@ define([
 
     return angular.module('app.home', [
     'app.constants',
-            'app.core',
-            'app.search',
+    'app.core',
+    'app.search',
     'ui.router'
     ]).config(['$stateProvider', 'moduleManagerProvider', 'menuManagerProvider', function ($stateProvider, moduleManagerProvider, menuManagerProvider) {
         $stateProvider

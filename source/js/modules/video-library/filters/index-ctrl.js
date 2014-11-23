@@ -4,12 +4,12 @@ define(['../module'], function (controllers) {
         $scope.genres = [];
         $scope.types = [];
 
-        Restangular.all('genre').getList()
+        Restangular.all('genres').getList()
             .then(function(result) {
                 $scope.genres = $scope.genres.concat(result);
             });
 
-        Restangular.all('video-type').getList()
+        Restangular.all('videotypes').getList()
             .then(function(result) {
                 $scope.types = $scope.types.concat(result);
             });

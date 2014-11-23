@@ -3,12 +3,12 @@ define(['../module'], function (controllers) {
     controllers.controller('PersonDetail', ['$scope', '$stateParams', 'Restangular', function ($scope, $stateParams, Restangular) {
         $scope.person = {};
         var df1 = jQuery.Deferred(), df2 = jQuery.Deferred();
-        Restangular.one('person', $stateParams.id).get()
+        Restangular.one('persons', $stateParams.id).get()
             .then(function(result) {
                 $scope.person = result;
                 df1.resolve(result);
             });
-        Restangular.all('video').getList({person: $stateParams.id})
+        Restangular.all('videos').getList({person: $stateParams.id})
             .then(function(result) {
                 df2.resolve(result);
             });

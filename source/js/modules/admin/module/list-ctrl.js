@@ -3,7 +3,7 @@ define(['../module'], function (controllers) {
     controllers.controller('AdminModuleList', ['$scope', '$location', 'Restangular', function ($scope, $location, Restangular) {
 
         var refreshList = function() {
-            Restangular.all('module').getList()
+            Restangular.all('modules').getList()
                 .then(function(result) {
                     $scope.modules = result;
                 });

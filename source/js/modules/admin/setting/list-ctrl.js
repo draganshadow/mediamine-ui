@@ -1,13 +1,7 @@
 define(['../module','./edit-ctrl'], function (controllers) {
     'use strict';
-    controllers.controller('AdminSettingList', ['$scope', '$location', 'Restangular', '$modal', function ($scope, $location, Restangular, $modal) {
-        var refreshList = function() {
-            Restangular.all('setting').getList()
-                .then(function(result) {
-                    $scope.settings = result;
-                });
-        };
-
+    controllers.controller('AdminSettingList', ['$scope', '$location', 'Restangular', '$modal', 'settings', function ($scope, $location, Restangular, $modal, settings) {
+        $scope.settings = settings.getAllSettingsAsList();
         $scope.edit = function (setting) {
 
 
@@ -33,21 +27,19 @@ define(['../module','./edit-ctrl'], function (controllers) {
                     if (res[i] !== '') {
                         var intVal = parseInt(res[i], 10);
                         if (!isNaN(intVal)) {
-                            value.push(intVal);
+                            value.push({value: intVal});
                         } else {
-                            value.push(res[i]);
+                            value.push({value: res[i]});
                         }
                     }
                 }
-                setting.value = value;
-                setting.put()
-                    .then(function(result) {
-                        refreshList();
+                setting.valueObject = value;
+                settings.save([setting])
+                    .then(function() {
+                        $scope.settings = settings.getAllSettingsAsList();
                     });
             });
         };
-
-        refreshList();
     }]);
 
 
