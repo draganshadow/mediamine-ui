@@ -3,7 +3,7 @@ define(['../module'], function (controllers) {
     controllers.controller('Search', ['$scope', '$stateParams', 'Restangular', '$rootScope', 'appCache', '$state',
         function ($scope, $stateParams, Restangular, $rootScope, appCache, $state) {
             var params = {
-                page: 0,
+                page: 1,
                 text: $stateParams.text
             };
 
@@ -18,7 +18,7 @@ define(['../module'], function (controllers) {
 
             var loadMore = function() {
                 appCache.put('videoListParam', params);
-                Restangular.all('videos').getList(params)
+                Restangular.all('searchs').getList(params)
                     .then(function(result) {
                         $scope.videos = $scope.videos.concat(result);
                     });
@@ -35,7 +35,7 @@ define(['../module'], function (controllers) {
                 params.page = 1;
                 params.genre = genre ? genre.name : null;
                 appCache.put('videoListParam', params);
-                Restangular.all('videos').getList(params)
+                Restangular.all('searchs').getList(params)
                     .then(function(result) {
                         $scope.videos = result;
                     });
@@ -45,7 +45,7 @@ define(['../module'], function (controllers) {
                 params.page = 1;
                 params.type = type ? type.name : null;
                 appCache.put('videoListParam', params);
-                Restangular.all('videos').getList(params)
+                Restangular.all('searchs').getList(params)
                     .then(function(result) {
                         $scope.videos = result;
                     });

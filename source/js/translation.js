@@ -86,6 +86,7 @@ define(['angular', 'ngTranslate'], function (angular) {
                 ADMIN_TASKS_KEY: 'Key',
                 ADMIN_TASKS_PROGRESS: 'Progress',
                 ADMIN_TASKS_REFRESH: 'Refresh',
+                ADMIN_TASKS_CLEAR: 'Cancel and Clear',
                 ADMIN_TASKS_RUNNING: 'Running',
                 RESET: 'reset'
             });
@@ -170,6 +171,7 @@ define(['angular', 'ngTranslate'], function (angular) {
                 ADMIN_TASKS_KEY: 'Nom',
                 ADMIN_TASKS_PROGRESS: 'Etat',
                 ADMIN_TASKS_REFRESH: 'Actualiser',
+                ADMIN_TASKS_CLEAR: 'Annuler tout',
                 ADMIN_TASKS_RUNNING: 'En cours',
                 RESET: 'reset'
             });

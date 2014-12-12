@@ -15,6 +15,12 @@ define(['../module'], function (controllers) {
                     $scope.jobs = result;
                 });
         };
+        $scope.clear = function() {
+            Restangular.all('jobs').customDELETE('remove-all')
+                .then(function() {
+                    $scope.refreshList();
+                });
+        };
 
         $scope.refreshList();
     }]);
