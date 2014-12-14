@@ -15,6 +15,8 @@ define(['../module', 'projekktor'], function (controllers) {
         };
 
         projekktor('#main_player', {
+                controls: true,
+                addplugins: ['controlbar'],
                 platforms: ['flash','browser'],
                 poster: $scope.image,
                 title: $scope.video.name,

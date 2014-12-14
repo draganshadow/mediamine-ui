@@ -9,7 +9,8 @@ define(['angular'], function (angular) {
             restrict: 'E',
             transclude: true,
             scope: {
-                videos:'='
+                videos:'=',
+                details:'='
             },
             templateUrl: 'js/modules/ui/list-videos/index.html'
         };

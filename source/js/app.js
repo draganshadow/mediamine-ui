@@ -4,6 +4,9 @@
  */
 define([
     'angular',
+    'ngAnimate',
+    'ngLoading',
+    'ngToaster',
     'ui.router',
     './config',
     './translation',
@@ -21,6 +24,7 @@ define([
     'use strict';
 
     return angular.module('app', [
+            'ngAnimate',
             'app.constants',
             'app.translation',
             'app.menu',
@@ -33,7 +37,9 @@ define([
             'app.ui',
             'app.player',
             'restangular',
-            'ui.router'
+            'ui.router',
+            'angular-loading-bar',
+            'toaster'
         ]).config(['CONFIG', '$urlRouterProvider', '$stateProvider', 'moduleManagerProvider', 'RestangularProvider', function (CONFIG, $urlRouterProvider, $stateProvider, moduleManagerProvider, RestangularProvider) {
             RestangularProvider.setBaseUrl(CONFIG.apiUrl);
 

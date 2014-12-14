@@ -1,6 +1,7 @@
 define(['../module'], function (controllers) {
     'use strict';
-    controllers.controller('AdminMaintenance', ['$scope', '$location', 'Restangular', '$timeout', function ($scope, $location, Restangular, $timeout) {
+    controllers.controller('AdminMaintenance', ['$scope', '$location', 'Restangular', '$timeout', 'toaster',
+        function ($scope, $location, Restangular, $timeout, toaster) {
         $scope.actions = [];
         var actionMap = {};
         var getActions = function() {
@@ -16,7 +17,7 @@ define(['../module'], function (controllers) {
         var executeActions = function(actionName) {
             actionMap[actionName].post('execute', {action:actionName})
                 .then(function(result) {
-                    alert('EXECUTED');
+                    toaster.pop('note', "Executed", actionName + " was executed. It may still be running in the background.");
                 });
         };
         $scope.execute = function (action) {

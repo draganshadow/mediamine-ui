@@ -9,7 +9,8 @@ define(['angular'], function (angular) {
             restrict: 'E',
             transclude: true,
             scope: {
-                video:'='
+                video:'=',
+                details:'='
             },
             templateUrl: 'js/modules/ui/tile-video/index.html'
         };

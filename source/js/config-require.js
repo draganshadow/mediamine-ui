@@ -24,6 +24,9 @@ define({
         'lodash': 'vendor/lodash/dist/lodash',
         'projekktor': 'vendor/projekktor/dist/projekktor-universal',
         'ngTranslate' : 'vendor/angular-translate/angular-translate',
+        'ngToaster' : 'vendor/angularjs-toaster/toaster',
+        'ngAnimate' : 'vendor/angular-animate/angular-animate',
+        'ngLoading' : 'vendor/angular-loading-bar/build/loading-bar',
         'app-partials'          : 'html2js/partials',
         'ui-bootstrap-partials' : 'html2js/ui.bootstrap.partials'
     },
@@ -34,6 +37,7 @@ define({
             'exports': 'angular'
         },
         'ngResource': ['angular'],
+        'ngAnimate' : ['angular'],
         'restangular': ['angular', 'lodash'],
         'projekktor': ['jquery'],
         'ui.router' : ['angular'],
@@ -45,6 +49,8 @@ define({
         'ui-bootstrap-accordion' : ['angular', 'ui-bootstrap-collapse'],
         'app-partials'          : ['angular'],
         'ui-bootstrap-partials' : ['angular'],
-        'ngTranslate' : ['angular']
+        'ngTranslate' : ['angular'],
+        'ngToaster' : ['angular', 'ngAnimate'],
+        'ngLoading' : ['angular', 'ngAnimate']
     }
 });
