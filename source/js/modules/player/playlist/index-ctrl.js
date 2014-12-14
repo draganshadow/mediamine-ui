@@ -1,6 +1,6 @@
 define(['../module'], function (controllers) {
     'use strict';
-    controllers.controller('Playlist', ['$scope', '$stateParams', 'Restangular', '$rootScope', function ($scope, $stateParams, Restangular, $rootScope) {
+    controllers.controller('Playlist', ['$scope', '$stateParams', 'Restangular', 'actions', '$rootScope', function ($scope, $stateParams, Restangular, actions, $rootScope) {
         $scope.bitrates = [150,300,500,1000];
         $scope.bitrate = {value :  300};
         $scope.playlist = [];
@@ -56,6 +56,11 @@ define(['../module'], function (controllers) {
         $rootScope.$on('playlist.clear', function(event, arg) {
             $scope.playlist = [];
         });
+
+        $scope.killEncoding = function () {
+            $rootScope.$emit('player.pause');
+            actions.executeAction('killencoding');
+        };
 
         $scope.$watch("bitrate.value", function () {
             $rootScope.$emit('player.bitrate', $scope.bitrate.value);

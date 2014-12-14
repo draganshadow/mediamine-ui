@@ -65,6 +65,10 @@ define(['../module', 'projekktor'], function (controllers) {
 //                projekktor('#main_player').setPlay();
 //            }, 2000);
         });
+        $rootScope.$on('player.pause', function(event, arg) {
+            console.log('player.pause');
+            projekktor('#main_player').setPause();
+        });
 
 
         $rootScope.$on('player.bitrate', function(event, arg) {

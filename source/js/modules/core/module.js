@@ -141,7 +141,44 @@ define([
                         return settingsList;
                     }
                 };
-            })
+            });
+    }])
+    .factory('ActionService', ['$q', '$rootScope', 'Restangular', '$state', 'toaster', function ($q, $rootScope, Restangular, $state, toaster) {
+            var actionMap = {}, actions;
+            var getActions = function() {
+                return Restangular.all('actions').getList()
+                    .then(function(result) {
+                        actions = result;
+                        angular.forEach(actions, function (action) {
+                            actionMap[action.name] = action;
+                        });
+                    });
+            };
+            var executeAction = function(actionName, params) {
+                actionMap[actionName].post('execute', {action:actionName})
+                    .then(function(result) {
+                        toaster.pop('note', "Executed", actionName + " was executed. It may still be running in the background.");
+                    });
+            };
 
-    }]);
+            var actionsPromise = getActions();
+
+            return actionsPromise.then(function() {
+                return {
+                    promise : actionsPromise,
+
+                    refresh : function () {
+                        this.promise = getActions();
+                        return this.promise;
+                    },
+                    getActions : function () {
+                        return actions;
+                    },
+                    executeAction : function (action, params) {
+                        return executeAction(action, params);
+                    }
+                };
+            });
+    }])
+    ;
 });

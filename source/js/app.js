@@ -53,7 +53,8 @@ define([
             $stateProvider
                 .state('mediamine', {
                     resolve: {
-                        settings: 'SettingService'
+                        settings: 'SettingService',
+                        actions: 'ActionService'
                     },
                     abstract: true,
                     url: '/mediamine',
