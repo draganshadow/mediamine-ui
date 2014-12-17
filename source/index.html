@@ -11,17 +11,17 @@
 </div>
 <div class="container-fluid height-100">
     <div class="row height-100">
-        <div class="col-md-2 left-frame">
+        <div ng-hide="!$root.showLeftViews" class="col-md-2 left-frame">
             <div class="frame-content">
                 <div ng-repeat="leftView in leftViews" ui-view="{{leftView.name}}" class="{{leftView.class}}"></div>
             </div>
         </div>
-        <div class="col-md-8 main-frame">
+        <div class="col-md-{{$root.viewSize(12, -2)}} main-frame">
             <div class="col-md-12 frame-content" when-scrolled="$root.$emit('main.frame.scroll')">
                 <div ui-view></div>
             </div>
         </div>
-        <div class="col-md-2 right-frame">
+        <div ng-hide="!$root.showRightViews" class="col-md-2 right-frame">
             <div ng-repeat="rightView in rightViews" ui-view="{{rightView.name}}" class="{{rightView.class}}"></div>
         </div>
     </div>

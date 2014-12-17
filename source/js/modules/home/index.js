@@ -1,4 +1,4 @@
 /**
  * Loader, contains list of Home module components
  */
-define(['./home-ctrl'], function () {});
+define(['./home-ctrl', './right-panel-ctrl'], function () {});

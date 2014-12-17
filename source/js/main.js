@@ -16,10 +16,19 @@ define([
             return $cacheFactory('appCache');
         }])
         .run(['CONFIG', '$rootScope', 'moduleManager', function(CONFIG, $rootScope, moduleManager) {
+            $rootScope.showHeaderViews = true;
             $rootScope.headerViews = moduleManager.getViews('header');
+            $rootScope.showLeftViews = true;
             $rootScope.leftViews = moduleManager.getViews('left');
+            $rootScope.showRightViews = true;
             $rootScope.rightViews = moduleManager.getViews('right');
+            $rootScope.showFooterViews = true;
             $rootScope.footerViews = moduleManager.getViews('footer');
+            $rootScope.viewSize = function (base, left, right) {
+                right = $rootScope.showRightViews ? (typeof right !== 'undefined' ? right : left) : 0;
+                left = $rootScope.showLeftViews ? left : 0;
+                return base + left + right;
+            };
             $rootScope.config = CONFIG;
             angular.element('body').addClass('random-background');
     //

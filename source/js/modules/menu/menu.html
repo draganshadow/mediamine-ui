@@ -9,7 +9,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a></a></li>
         </ul>
-        <div ng-repeat="item in menuItems">
+        <div ng-repeat="item in menuItems | orderBy:order">
             <div ng-if="item.type == 'link'">
                 <ul class="nav navbar-nav {{item.class}}">
                     <li active-link="active">
@@ -18,7 +18,7 @@
                     </li>
                 </ul>
             </div>
-            <div ng-if="item.type == 'partial'" ng-include="item.templateUrl"></div>
+            <div ng-if="item.type == 'partial'" class="{{item.class}}" ng-include="item.templateUrl"></div>
             <div ng-if="item.type == 'dropdown'">
                 <ul class="nav navbar-nav {{item.class}}">
                     <li class="dropdown">
