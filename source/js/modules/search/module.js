@@ -36,7 +36,7 @@ define([
 
             menuManagerProvider.registerEntry({
                 type: 'partial',
-                order: 0,
+                order: 1002,
                 templateUrl: 'js/modules/search/widget/menu-search.html'
             });
         }]);

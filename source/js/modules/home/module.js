@@ -26,7 +26,7 @@ define([
 
         menuManagerProvider.registerEntry({
             type: 'partial',
-            order: 10000,
+            order: 1000,
             templateUrl: 'js/modules/home/hideRightPanel.html',
             class: 'navbar-right'
         });

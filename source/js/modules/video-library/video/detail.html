@@ -1,6 +1,9 @@
 <div class="col-md-{{$root.viewSize(8, 2)}} column">
 <panel ng-show="video" ng-cloak>
-    <panel-heading><h1>{{video.name}}<span ng-if="video.year"> ({{video.year}})</span></h1></panel-heading>
+    <panel-heading><h1>
+        <span ng-if="video.group"><a ui-sref="mediamine.videolib.serie({id: video.group.id})">{{video.group.name}}</a> - </span>
+        <span ng-if="video.season"><a ui-sref="mediamine.videolib.season({id: video.season.id})">S{{video.season.number}}</a> - </span>
+        <span ng-if="video.episode">{{video.episode}} - </span>{{video.name}}<span ng-if="video.year"> ({{video.year}})</span></h1></panel-heading>
     <div class="row clearfix">
         <div class="col-xs-4 col-sm-4 col-md-4 column overflow-hidden"><img ng-src="{{video.images[0].pathKey | imagePath : 300 : 400 : 'jpg' : 'hrbox' : 'video': 'hrbox_ffffff'}}" class="thumbnail img-rounded"></div>
         <div class="col-xs-8 col-sm-8 col-md-8 column">

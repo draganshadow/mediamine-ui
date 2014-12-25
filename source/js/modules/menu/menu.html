@@ -6,10 +6,8 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a></a></li>
-        </ul>
-        <div ng-repeat="item in menuItems | orderBy:order">
+        <div class="container-fluid">
+        <div ng-repeat="item in menuItems | orderBy:'order'">
             <div ng-if="item.type == 'link'">
                 <ul class="nav navbar-nav {{item.class}}">
                     <li active-link="active">
@@ -32,6 +30,7 @@
                     </li>
                 </ul>
             </div>
+        </div>
         </div>
     </div><!-- /.navbar-collapse -->
 </nav>

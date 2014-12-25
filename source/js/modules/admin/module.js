@@ -122,7 +122,7 @@ define([
 
             menuManagerProvider.registerEntry({
                 type: 'dropdown',
-                order: 0,
+                order: 1001,
                 label: 'Admin',
                 class: 'navbar-right',
                 subItems: [
