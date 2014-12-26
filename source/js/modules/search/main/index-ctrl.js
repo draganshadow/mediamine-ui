@@ -15,46 +15,36 @@ define(['../module'], function (controllers) {
             }
 
             $scope.videos = [];
+            $scope.series = [];
+            $scope.persons = [];
 
-            var loadMore = function() {
+            var loadVideos = function() {
                 appCache.put('videoListParam', params);
-                Restangular.all('searchs').getList(params)
+                Restangular.all('searchs').getList(angular.extend({type: 'video'}, params))
                     .then(function(result) {
                         $scope.videos = $scope.videos.concat(result);
                     });
             };
 
-            loadMore();
-
-            var unbindScrollListener = $rootScope.$on('main.frame.scroll', function() {
-                params.page++;
-                loadMore();
-            });
-
-            var unbindVideoGenreListener = $rootScope.$on('filter.video.genre', function(event, genre) {
-                params.page = 1;
-                params.genre = genre ? genre.name : null;
+            var loadSeries = function() {
                 appCache.put('videoListParam', params);
-                Restangular.all('searchs').getList(params)
+                Restangular.all('searchs').getList(angular.extend({type: 'group'}, params))
                     .then(function(result) {
-                        $scope.videos = result;
+                        $scope.series = $scope.series.concat(result);
                     });
-            });
+            };
 
-            var unbindVideoTypeListener = $rootScope.$on('filter.video.type', function(event, type) {
-                params.page = 1;
-                params.type = type ? type.name : null;
+            var loadPersons = function() {
                 appCache.put('videoListParam', params);
-                Restangular.all('searchs').getList(params)
+                Restangular.all('searchs').getList(angular.extend({type: 'person'}, params))
                     .then(function(result) {
-                        $scope.videos = result;
+                        $scope.persons = $scope.persons.concat(result);
                     });
-            });
-            $scope.$on('$destroy', function () {
-                unbindScrollListener();
-                unbindVideoGenreListener();
-                unbindVideoTypeListener();
-            });
+            };
+
+            loadVideos();
+            loadSeries();
+            loadPersons();
     }]);
 });
 

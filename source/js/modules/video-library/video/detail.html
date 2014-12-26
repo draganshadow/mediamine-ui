@@ -1,4 +1,4 @@
-<div class="col-md-{{$root.viewSize(8, 2)}} column">
+<div class="col-md-{{$root.viewSize(8, 2)}} col-md-offset-{{$root.viewSize(2, -2, 0)}} column">
 <panel ng-show="video" ng-cloak>
     <panel-heading><h1>
         <span ng-if="video.group"><a ui-sref="mediamine.videolib.serie({id: video.group.id})">{{video.group.name}}</a> - </span>

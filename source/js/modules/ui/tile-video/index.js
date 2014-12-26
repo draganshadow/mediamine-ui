@@ -9,10 +9,16 @@ define(['angular'], function (angular) {
             restrict: 'E',
             transclude: true,
             scope: {
+                tileClass:'@',
                 video:'=',
                 details:'='
             },
-            templateUrl: 'js/modules/ui/tile-video/index.html'
+            templateUrl: 'js/modules/ui/tile-video/index.html?' + MEDIAMINE_URL_ARG,
+            compile: function(element, attrs){
+                return function($scope, element, attrs) {
+                    $scope.tileClass = $scope.tileClass ? $scope.tileClass + ' ' : '';
+                };
+            }
         };
     });
 });

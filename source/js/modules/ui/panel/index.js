@@ -12,7 +12,7 @@ define(['angular'], function (angular) {
                     heading:'@',
                     class: '@'
                 },
-                templateUrl: 'js/modules/ui/panel/panel.html',
+                templateUrl: 'js/modules/ui/panel/panel.html?' + MEDIAMINE_URL_ARG,
                 controller: function($scope, $element) {
                     this.setHeading = function(element) {
                         this.heading = element;

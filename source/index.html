@@ -11,7 +11,7 @@
 </div>
 <div class="container-fluid height-100">
     <div class="row height-100">
-        <div ng-hide="!$root.showLeftViews" class="col-md-2 left-frame">
+        <div ng-hide="!$root.showView('left')" class="col-md-2 left-frame">
             <div class="frame-content">
                 <div ng-repeat="leftView in leftViews" ui-view="{{leftView.name}}" class="{{leftView.class}}"></div>
             </div>
@@ -21,7 +21,7 @@
                 <div ui-view></div>
             </div>
         </div>
-        <div ng-hide="!$root.showRightViews" class="col-md-2 right-frame">
+        <div ng-hide="!$root.showView('right')" class="col-md-2 right-frame">
             <div ng-repeat="rightView in rightViews" ui-view="{{rightView.name}}" class="{{rightView.class}}"></div>
         </div>
     </div>
@@ -33,11 +33,14 @@
 <!-- Scripts -->
 <script src="vendor/requirejs/require.js"></script>
 <script>
+    var MEDIAMINE_ENV = 'dev';
+    var MEDIAMINE_VERSION = '0.4.0' + (('dev' === MEDIAMINE_ENV) ? '.' + (new Date()).getTime() : '');
+    var MEDIAMINE_URL_ARG = 'bust=v' + MEDIAMINE_VERSION;
     // obtain requirejs config
-    require(['require', './js/config-require.js?bust=v0.4.0'+ (new Date()).getTime()], function (require, config) {
+    require(['require', './js/config-require.js?' + MEDIAMINE_URL_ARG], function (require, config) {
 
         // set cache beater
-        config.urlArgs = 'bust=v0.4.0' + (new Date()).getTime();
+        config.urlArgs = MEDIAMINE_URL_ARG;
 
         // update global require config
         window.require.config(config);

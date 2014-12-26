@@ -15,7 +15,7 @@ define([
         .service('appCache', ['$cacheFactory', function($cacheFactory) {
             return $cacheFactory('appCache');
         }])
-        .run(['CONFIG', '$rootScope', 'moduleManager', function(CONFIG, $rootScope, moduleManager) {
+        .run(['CONFIG', '$rootScope', '$state', 'moduleManager', function(CONFIG, $rootScope, $state, moduleManager) {
             $rootScope.showHeaderViews = true;
             $rootScope.headerViews = moduleManager.getViews('header');
             $rootScope.showLeftViews = true;
@@ -24,11 +24,39 @@ define([
             $rootScope.rightViews = moduleManager.getViews('right');
             $rootScope.showFooterViews = true;
             $rootScope.footerViews = moduleManager.getViews('footer');
+
+            $rootScope.showView = function (position) {
+                var Position = position.charAt(0).toUpperCase() + position.slice(1);
+                var show = $rootScope['show' + Position + 'Views'];
+                var views = [];
+                angular.forEach($state.$current.path, function(item){
+                    for (var view in item.views) {
+                        if (item.views[view].templateUrl.indexOf('js/modules/core/empty') === -1) {
+                            var v = view.replace('@', '');
+                            if (v) {
+                                views.push(v);
+                            }
+                        }
+                    }
+                });
+
+                var hasView = false;
+                angular.forEach($rootScope[position + 'Views'], function(item){
+                    hasView = hasView || (views.indexOf(item.name) >= 0);
+                });
+
+                if (show) {
+                    show = hasView;
+                }
+                return show;
+            };
+
             $rootScope.viewSize = function (base, left, right) {
-                right = $rootScope.showRightViews ? (typeof right !== 'undefined' ? right : left) : 0;
-                left = $rootScope.showLeftViews ? left : 0;
+                right = $rootScope.showView('right') ? (typeof right !== 'undefined' ? right : left) : 0;
+                left = $rootScope.showView('left') ? left : 0;
                 return base + left + right;
             };
+
             $rootScope.config = CONFIG;
             angular.element('body').addClass('random-background');
     //

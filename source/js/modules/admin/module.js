@@ -24,7 +24,7 @@ define([
                 url: '/admin',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/home.html',
+                        templateUrl: 'js/modules/admin/home.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminHomeController'
                     }
                 }
@@ -33,7 +33,7 @@ define([
                 url: '/files',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/files/main.html',
+                        templateUrl: 'js/modules/admin/files/main.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminFilesMain'
                     }
                 }
@@ -42,7 +42,7 @@ define([
                 url: '/library',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/library/list.html',
+                        templateUrl: 'js/modules/admin/library/list.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminLibrary'
                     }
                 }
@@ -51,7 +51,7 @@ define([
                 url: '/maintenance',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/maintenance/main.html',
+                        templateUrl: 'js/modules/admin/maintenance/main.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminMaintenance'
                     }
                 }
@@ -60,7 +60,7 @@ define([
                 url: '/maintenance/install',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/maintenance/main.html',
+                        templateUrl: 'js/modules/admin/maintenance/main.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminMaintenance'
                     }
                 }
@@ -69,7 +69,7 @@ define([
                 url: '/module',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/module/list.html',
+                        templateUrl: 'js/modules/admin/module/list.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminModuleList'
                     }
                 }
@@ -78,7 +78,7 @@ define([
                 url: '/detail',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/module/detail.html',
+                        templateUrl: 'js/modules/admin/module/detail.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminModuleDetail'
                     }
                 }
@@ -87,7 +87,7 @@ define([
                 url: '/setting',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/setting/list.html',
+                        templateUrl: 'js/modules/admin/setting/list.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminSettingList'
                     }
                 }
@@ -96,7 +96,7 @@ define([
                 url: '/edit',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/setting/edit.html',
+                        templateUrl: 'js/modules/admin/setting/edit.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminSettingEdit'
                     }
                 }
@@ -105,7 +105,7 @@ define([
                 url: '/jobs',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/jobs/main.html',
+                        templateUrl: 'js/modules/admin/jobs/main.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminJobsMain'
                     }
                 }
@@ -114,7 +114,7 @@ define([
                 url: '/tunnel',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/admin/tunnel/list.html',
+                        templateUrl: 'js/modules/admin/tunnel/list.html?' + MEDIAMINE_URL_ARG,
                         controller: 'AdminTunnelList'
                     }
                 }
