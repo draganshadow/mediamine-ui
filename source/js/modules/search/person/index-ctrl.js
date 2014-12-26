@@ -14,13 +14,14 @@ define(['../module'], function (controllers) {
                 $state.go('mediamine.search', {text: $stateParams.text, param: 'p'});
             }
 
-            $scope.videos = [];
+            $scope.type = 'person';
+            $scope.persons = [];
 
             var loadMore = function() {
                 appCache.put('videoListParam', params);
-                Restangular.all('searchs').getList(params)
+                Restangular.all('searchs').getList(angular.extend({type: 'person'}, params))
                     .then(function(result) {
-                        $scope.videos = $scope.videos.concat(result);
+                        $scope.persons = $scope.persons.concat(result);
                     });
             };
 
@@ -37,7 +38,7 @@ define(['../module'], function (controllers) {
                 appCache.put('videoListParam', params);
                 Restangular.all('searchs').getList(params)
                     .then(function(result) {
-                        $scope.videos = result;
+                        $scope.persons = result;
                     });
             });
 
@@ -47,7 +48,7 @@ define(['../module'], function (controllers) {
                 appCache.put('videoListParam', params);
                 Restangular.all('searchs').getList(params)
                     .then(function(result) {
-                        $scope.videos = result;
+                        $scope.persons = result;
                     });
             });
             $scope.$on('$destroy', function () {

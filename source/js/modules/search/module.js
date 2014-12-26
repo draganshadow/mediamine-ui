@@ -30,7 +30,7 @@ define([
                     }
                 })
                 .state('mediamine.searchVideo', {
-                    url: '/search/:text/:param',
+                    url: '/search-video/:text/:param',
                     views: {
                         "": {
                             templateUrl: 'js/modules/search/video/index.html?' + MEDIAMINE_URL_ARG,
@@ -43,7 +43,7 @@ define([
                     }
                 })
                 .state('mediamine.searchSeries', {
-                    url: '/search/:text/:param',
+                    url: '/search-series/:text/:param',
                     views: {
                         "": {
                             templateUrl: 'js/modules/search/series/index.html?' + MEDIAMINE_URL_ARG,
@@ -52,7 +52,7 @@ define([
                     }
                 })
                 .state('mediamine.searchPerson', {
-                    url: '/search/:text/:param',
+                    url: '/search-person/:text/:param',
                     views: {
                         "": {
                             templateUrl: 'js/modules/search/person/index.html?' + MEDIAMINE_URL_ARG,

@@ -7,7 +7,7 @@
     <div ng-switch-default>
         <div class="panel panel-default">
             <div class="panel-heading">
-                {{ 'VIDEO' | translate }}
+                {{ 'VIDEO' | translate }} <a ui-sref="mediamine.searchVideo({'text': text, 'param': 'p'})">{{ 'MORE' | translate }}</a>
             </div>
             <div class="panel-body scroll-x">
                 <table><tr>
@@ -25,7 +25,7 @@
     <div ng-switch-default>
         <div class="panel panel-default">
             <div class="panel-heading">
-                {{ 'SERIES' | translate }}
+                {{ 'SERIES' | translate }} <a ui-sref="mediamine.searchSeries({'text': text, 'param': 'p'})">{{ 'MORE' | translate }}</a>
             </div>
             <div class="panel-body scroll-x">
                 <table><tr>
@@ -45,7 +45,7 @@
     <div ng-switch-default>
         <div class="panel panel-default">
             <div class="panel-heading">
-                {{ 'PERSONS' | translate }}
+                {{ 'PERSONS' | translate }} <a ui-sref="mediamine.searchPerson({'text': text, 'param': 'p'})">{{ 'MORE' | translate }}</a>
             </div>
             <div class="panel-body scroll-x">
                 <table><tr>

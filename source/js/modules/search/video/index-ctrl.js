@@ -14,6 +14,7 @@ define(['../module'], function (controllers) {
                 $state.go('mediamine.search', {text: $stateParams.text, param: 'p'});
             }
 
+            $scope.type = 'video';
             $scope.videos = [];
 
             var loadMore = function() {

@@ -1,48 +1,15 @@
+<panel heading="{{ 'SEARCH' | translate }} {{ 'SERIES' | translate }}">
+    <div ng-include="'js/modules/search/widget/search.html'"></div>
+</panel>
 <div ng-switch on="videos.length">
     <div ng-switch-when="0">
-        <panel heading="{{ 'SEARCH' | translate }}">
-            <div ng-include="'js/modules/search/widget/search.html'"></div>
-            {{ 'NO_RESULTS' | translate }}
-        </panel>
     </div>
     <div ng-switch-default>
-        <panel heading="{{ 'SEARCH' | translate }}">
-            <div ng-include="'js/modules/search/widget/search.html'"></div>
-        </panel>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                {{ 'VIDEO' | translate }}
-            </div>
-            <div class="panel-body scroll-x">
-                <table><tr>
-                    <td class="valign-top" ng-repeat="video in videos">
-                        <tile-video video="video" details="true"></tile-video>
-                    </td>
-                </tr></table>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                {{ 'SERIES' | translate }}
-            </div>
-            <div class="panel-body scroll-x">
-                <table><tr>
-                    <td class="valign-top" ng-repeat="video in videos">
-                        <tile-video video="video" details="true"></tile-video>
-                    </td>
-                </tr></table>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                {{ 'PERSONS' | translate }}
-            </div>
-            <div class="panel-body scroll-x">
-                <table><tr>
-                    <td class="valign-top" ng-repeat="video in videos">
-                        <tile-video video="video" details="true"></tile-video>
-                    </td>
-                </tr></table>
+        <div class="h100 oScrollY">
+            <div class="col-xs-{{$root.viewSize(2, 2)}} col-sm-{{$root.viewSize(2, 2)}} col-md-2 mbm" ng-repeat="serie in series | filter:serieFilter">
+                <tile image="{{serie.images[0].pathKey | imagePath : 300 : 400 : 'jpg' : 'hrbox' : 'placeholder': 'hrbox_ffffff'}}" title="{{serie.name}}" index="$index">
+                    <h4 class="space-nowrap overflow-hidden"><a ui-sref="mediamine.videolib.serie({id: serie.id})">{{serie.name}}</a></h4>
+                </tile>
             </div>
         </div>
     </div>
