@@ -16,6 +16,7 @@
         "angular-scenario": "1.2.*",
         "angular-touch": "1.2.*",
         "angular-animate": "1.2.*",
+        "angular-cookies": "1.2.*",
         "restangular": "1.1.*",
         "angularjs-toaster": "latest",
         "angular-loading-bar": "latest",

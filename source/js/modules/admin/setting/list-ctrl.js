@@ -1,4 +1,4 @@
-define(['../module','./edit-ctrl'], function (controllers) {
+define(['../module'], function (controllers) {
     'use strict';
     controllers.controller('AdminSettingList', ['$scope', '$location', 'Restangular', '$modal', 'settings', function ($scope, $location, Restangular, $modal, settings) {
         $scope.settings = settings.getAllSettingsAsList();
@@ -6,7 +6,7 @@ define(['../module','./edit-ctrl'], function (controllers) {
 
 
             var modalInstance = $modal.open({
-                templateUrl: 'js/modules/admin/setting/edit.html',
+                templateUrl: 'js/modules/admin/setting/edit.html?' + MEDIAMINE_URL_ARG,
                 controller: EditCtrl,
                 size: 400,
                 resolve: {

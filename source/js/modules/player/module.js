@@ -5,7 +5,8 @@ define([
     '../../config',
     '../ui/index',
     'ui-bootstrap-buttons',
-    '../core/index'
+    '../core/index',
+    'projekktor'
 ], function (angular) {
     'use strict';
 

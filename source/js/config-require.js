@@ -26,6 +26,7 @@ define({
         'ngTranslate' : 'vendor/angular-translate/angular-translate',
         'ngToaster' : 'vendor/angularjs-toaster/toaster',
         'ngAnimate' : 'vendor/angular-animate/angular-animate',
+        'ngCookies' : 'vendor/angular-cookies/angular-cookies',
         'ngLoading' : 'vendor/angular-loading-bar/build/loading-bar',
         'app-partials'          : 'html2js/partials',
         'ui-bootstrap-partials' : 'html2js/ui.bootstrap.partials'
@@ -37,9 +38,13 @@ define({
             'exports': 'angular'
         },
         'ngResource': ['angular'],
+        'ngCookies' : ['angular'],
         'ngAnimate' : ['angular'],
         'restangular': ['angular', 'lodash'],
-        'projekktor': ['jquery'],
+        'projekktor': {
+            'deps': ['jquery'],
+            'exports': 'projekktor'
+        },
         'ui.router' : ['angular'],
         'ui-bootstrap-dropdown' : ['angular'],
         'ui-bootstrap-transition' : ['angular'],

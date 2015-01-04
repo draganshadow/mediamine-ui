@@ -38,6 +38,15 @@ define([
                     }
                 }
             })
+            .state('mediamine.admin.users', {
+                url: '/users',
+                views: {
+                    "": {
+                        templateUrl: 'js/modules/admin/user/list.html?' + MEDIAMINE_URL_ARG,
+                        controller: 'AdminUserList'
+                    }
+                }
+            })
             .state('mediamine.admin.library', {
                 url: '/library',
                 views: {
@@ -123,12 +132,20 @@ define([
             menuManagerProvider.registerEntry({
                 type: 'dropdown',
                 order: 1001,
-                label: 'Admin',
                 class: 'navbar-right',
+                preIcon: 'glyphicon glyphicon-cog',
+                preIconTitle: 'Admin',
+                condition: function ($rootScope) {
+                    return $rootScope.user.roles.indexOf('ROLE_SUPER_ADMIN') !== -1;
+                },
                 subItems: [
                     {
                         label: 'ADMIN_MENU_FILES',
                         sref: 'mediamine.admin.files'
+                    },
+                    {
+                        label: 'ADMIN_MENU_USERS',
+                        sref: 'mediamine.admin.users'
                     },
                     {
                         label: 'ADMIN_MENU_MODULES',

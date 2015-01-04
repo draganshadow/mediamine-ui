@@ -8,7 +8,7 @@ define(['./home-ctrl',
     './module/list-ctrl',
     './module/detail-ctrl',
     './setting/list-ctrl',
-    './setting/edit-ctrl',
     './jobs/main-ctrl',
-    './tunnel/list-ctrl'
+    './tunnel/list-ctrl',
+    './user/list-ctrl'
 ], function () {});

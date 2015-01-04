@@ -41,7 +41,7 @@ define([
           moduleManagerProvider
               .registerView('header', 'menu',
               {
-                  templateUrl: 'js/modules/menu/menu.html',
+                  templateUrl: 'js/modules/menu/menu.html?' + MEDIAMINE_URL_ARG,
                   controller: 'MenuController'
               }
           );

@@ -7,6 +7,7 @@ define([
     'ngAnimate',
     'ngLoading',
     'ngToaster',
+    'ngCookies',
     'ui.router',
     './config',
     './translation',
@@ -18,29 +19,32 @@ define([
     './modules/home/index',
     './modules/search/index',
     './modules/admin/index',
+    './modules/user/index',
     './modules/video-library/index',
     './modules/ui/index'
 ], function (angular) {
     'use strict';
 
     return angular.module('app', [
-            'ngAnimate',
-            'app.constants',
-            'app.translation',
-            'app.menu',
-            'app.partials',
-            'ui.bootstrap.partials',
-            'app.admin',
-            'app.home',
-            'app.search',
-            'app.videolib',
-            'app.ui',
-            'app.player',
-            'restangular',
-            'ui.router',
-            'angular-loading-bar',
-            'toaster'
-        ])
+        'ngAnimate',
+        'ngCookies',
+        'app.constants',
+        'app.translation',
+        'app.menu',
+        'app.partials',
+        'ui.bootstrap.partials',
+        'app.admin',
+        'app.home',
+        'app.search',
+        'app.videolib',
+        'app.ui',
+        'app.player',
+        'restangular',
+        'ui.router',
+        'angular-loading-bar',
+        'toaster',
+        'app.user'
+    ])
         .constant('toasterConfig', {
             'limit': 0,                   // limits max number of toasts
             'tap-to-dismiss': true,
@@ -66,26 +70,31 @@ define([
             'title-class': 'toast-title',
             'message-class': 'toast-message'
         })
-        .config(['CONFIG', '$urlRouterProvider', '$stateProvider', 'moduleManagerProvider', 'RestangularProvider', function (CONFIG, $urlRouterProvider, $stateProvider, moduleManagerProvider, RestangularProvider) {
-            RestangularProvider.setBaseUrl(CONFIG.apiUrl);
+        .config(['CONFIG', '$urlRouterProvider', '$stateProvider', 'moduleManagerProvider', 'RestangularProvider',
+            function (CONFIG, $urlRouterProvider, $stateProvider, moduleManagerProvider, RestangularProvider) {
+                RestangularProvider.setBaseUrl(CONFIG.apiUrl);
 
-            $urlRouterProvider.otherwise('/mediamine/home');
-            var viewConfig = {
-                "" : {
-                    templateUrl: 'js/modules/core/abstract.html'
-                }
-            };
-            angular.extend(viewConfig, moduleManagerProvider.getViewConfigs());
-            $stateProvider
-                .state('mediamine', {
-                    resolve: {
-                        settings: 'SettingService',
-                        actions: 'ActionService'
-                    },
-                    abstract: true,
-                    url: '/mediamine',
-                    views: viewConfig
-                });
-        }]);
+                $urlRouterProvider.otherwise('/mediamine/home');
+                var viewConfig = {
+                    "": {
+                        templateUrl: 'js/modules/core/abstract.html'
+                    }
+                };
+                angular.extend(viewConfig, moduleManagerProvider.getViewConfigs());
+                $stateProvider
+                    .state('mediamine', {
+                        resolve: {
+                            user: function (UserService) {
+                                // MyServiceData will also be injectable in your controller, if you don't want this you could create a new promise with the $q service
+                                return UserService.promise.then(function () {return UserService});
+                            },
+                            settings: 'SettingService',
+                            actions: 'ActionService'
+                        },
+                        abstract: true,
+                        url: '/mediamine',
+                        views: viewConfig
+                    });
+            }]);
 
 });

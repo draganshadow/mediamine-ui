@@ -4,9 +4,9 @@
     <tabset>
         <tab heading="{{ 'ADMIN_TASKS_RUNNING' | translate }}"></tab>
     </tabset>
-    <p>
-        <button type="button" class="btn btn-primary btn-xs pull-right margin-top-xs" ng-click="refreshList()">{{ 'ADMIN_TASKS_REFRESH' | translate }}</button>
-        <button type="button" class="btn btn-primary btn-xs pull-right margin-top-xs" ng-click="clear()">{{ 'ADMIN_TASKS_CLEAR' | translate }}</button>
+    <p class="pull-right">
+        <button type="button" class="btn btn-primary btn-xs margin-top-xs" ng-click="refreshList()">{{ 'ADMIN_TASKS_REFRESH' | translate }}</button>
+        <button type="button" class="btn btn-primary btn-xs margin-top-xs" ng-click="clear()">{{ 'ADMIN_TASKS_CLEAR' | translate }}</button>
     </p>
     <table class="table table-striped">
         <thead>
@@ -24,7 +24,7 @@
             <td>{{job.barLabel}}</td>
             <td>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="{{job.percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{job.percent}}%;">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{job.percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{job.percent}}%;">
                         {{job.percent}}%
                     </div>
                 </div>

@@ -15,7 +15,7 @@ define([
         .service('appCache', ['$cacheFactory', function($cacheFactory) {
             return $cacheFactory('appCache');
         }])
-        .run(['CONFIG', '$rootScope', '$state', 'moduleManager', function(CONFIG, $rootScope, $state, moduleManager) {
+        .run(['$http', 'CONFIG', '$rootScope', '$state', 'moduleManager', function($http, CONFIG, $rootScope, $state, moduleManager) {
             $rootScope.showHeaderViews = true;
             $rootScope.headerViews = moduleManager.getViews('header');
             $rootScope.showLeftViews = true;

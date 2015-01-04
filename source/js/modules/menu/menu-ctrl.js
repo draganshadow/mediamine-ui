@@ -3,7 +3,7 @@
  */
 define(['./module'], function (module) {
     'use strict';
-    module.controller('MenuController', ['$scope', 'menuManager', function ($scope, menuManager) {
+    module.controller('MenuController', ['$rootScope', '$scope', 'menuManager', function ($rootScope, $scope, menuManager) {
         $scope.menuItems = menuManager.getEntries();
     }]);
 });
