@@ -11,7 +11,7 @@ define(['../module', 'projekktor'], function (controllers, projekktor) {
                 var userLastTime = UserService.getSetting('player', 'last_time');
                 userLastTime.valueObject = [{value: time.toString()}];
 
-                user.save([userLastVideo, userLastTime])
+                UserService.save([userLastVideo, userLastTime])
                     .then(function () {
                     });
             }
@@ -137,7 +137,9 @@ define(['../module', 'projekktor'], function (controllers, projekktor) {
             $rootScope.$on('player.play', function (event, arg) {
                 console.log('player.play');
                 $scope.player.time = 0;
-                setVideo(arg);
+                if (arg) {
+                    setVideo(arg);
+                }
                 projekktor('#main_player').setPlay();
             });
             $rootScope.$on('player.pause', function (event, arg) {

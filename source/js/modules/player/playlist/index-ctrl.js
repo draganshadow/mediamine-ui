@@ -28,6 +28,19 @@ define(['../module'], function (controllers) {
                     });
             }
 
+            function playlistAddAll(videos, index, backup) {
+                backup = typeof backup !== 'undefined' ? backup : true;
+                angular.forEach(videos, function(video) {
+                    $scope.playlist.push(video);
+                    if ($scope.playlist.length === 0) {
+                        $rootScope.$emit('player.set', $scope.playlist[0]);
+                    }
+                });
+                if (backup) {
+                    backupPlaylist($scope.playlist);
+                }
+            }
+
             function backupPlaylist(playlist) {
                 var playlistBackup = [];
                 angular.forEach(playlist, function (item) {
@@ -61,17 +74,21 @@ define(['../module'], function (controllers) {
             };
 
             $rootScope.$on('playlist.play', function (event, arg) {
-                Restangular.one('videos', arg.id).get()
-                    .then(function (result) {
-                        if ($scope.playlist.lenght == 0 || $scope.playlist[0].id != result.id) {
-                            $scope.playlist.unshift(result);
-                        }
-                        $rootScope.$emit('player.play', $scope.playlist[0]);
-                        return $scope.playlist;
-                    })
-                    .then(function(playlist) {
-                        backupPlaylist(playlist);
-                    });
+                if (arg) {
+                    Restangular.one('videos', arg.id).get()
+                        .then(function (result) {
+                            if ($scope.playlist.length == 0 || $scope.playlist[0].id != result.id) {
+                                $scope.playlist.unshift(result);
+                            }
+                            $rootScope.$emit('player.play', $scope.playlist[0]);
+                            return $scope.playlist;
+                        })
+                        .then(function(playlist) {
+                            backupPlaylist(playlist);
+                        });
+                } else {
+                    $rootScope.$emit('player.play');
+                }
             });
 
             $rootScope.$on('player.completed', function (event, arg) {
@@ -89,6 +106,12 @@ define(['../module'], function (controllers) {
             $rootScope.$on('playlist.add', function (event, arg) {
                 if (arg) {
                     playlistAdd(arg.id);
+                }
+            });
+
+            $rootScope.$on('playlist.addAll', function (event, arg) {
+                if (arg) {
+                    playlistAddAll(arg);
                 }
             });
             $rootScope.$on('playlist.remove', function (event, arg) {
