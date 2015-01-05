@@ -112,6 +112,8 @@ define(['angular', 'ngTranslate'], function (angular) {
                 RESET: 'reset',
                 YES: 'Yes',
                 NO: 'No',
+                SCAN: 'Scan',
+                RESCAN_ITEM: 'Reload data',
                 PLAYER_RESUME_TITLE: 'Resume playback ?'
             });
             $translateProvider.translations('fr', {
@@ -211,7 +213,7 @@ define(['angular', 'ngTranslate'], function (angular) {
                 ADMIN_TASKS_KEY: 'Nom',
                 ADMIN_TASKS_PROGRESS: 'Etat',
                 ADMIN_TASKS_REFRESH: 'Actualiser',
-                ADMIN_TASKS_CLEAR: 'Annuler tout',
+                ADMIN_TASKS_CLEAR: 'Annuler / Supprimer tout',
                 ADMIN_TASKS_RUNNING: 'En cours',
                 ADMIN_USER_TITLE: 'Utilisateurs',
                 ADMIN_USER_USERNAME: 'Pseudonyme',
@@ -221,6 +223,8 @@ define(['angular', 'ngTranslate'], function (angular) {
                 RESET: 'reset',
                 YES: 'Oui',
                 NO: 'Non',
+                SCAN: 'Scan',
+                RESCAN_ITEM: 'Recharger les infos',
                 PLAYER_RESUME_TITLE: 'Reprendre la lecture ?'
             });
         $translateProvider.preferredLanguage('fr');

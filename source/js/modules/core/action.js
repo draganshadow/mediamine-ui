@@ -7,7 +7,8 @@ define(['./module'], function (module) {
     module.factory('ActionService', ['$q', '$rootScope', 'UserService', 'Restangular', '$state', 'toaster', function ($q, $rootScope, UserService, Restangular, $state, toaster) {
         var actionMap = {}, actions;
         var executeAction = function (actionName, params) {
-            return actionMap[actionName].post('execute', {action: actionName})
+            params = typeof params !== 'undefined' ? params : [];
+            return actionMap[actionName].post('execute', {action: actionName, params: params})
                 .then(function (result) {
                     toaster.pop('note', "Executed", actionName + " was executed. It may still be running in the background.");
                 });

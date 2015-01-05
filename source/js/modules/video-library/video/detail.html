@@ -34,6 +34,8 @@
                             <li><a href="{{$root.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/600-' + video.files[0].file.pathKey + '.flv'}}" download>flv (600)</a></li>
                         </ul>
                     </div>
+
+                    <button type="button" class="btn btn-default" ng-click="scan()">{{ 'RESCAN_ITEM' | translate }}</button>
                 </div>
             </div>
         </div>
