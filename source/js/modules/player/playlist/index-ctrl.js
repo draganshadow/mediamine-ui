@@ -1,8 +1,8 @@
 define(['../module'], function (controllers) {
     'use strict';
-    controllers.controller('Playlist', ['$scope', '$stateParams', 'Restangular', 'actions', '$rootScope', 'user',
+    controllers.controller('Playlist', ['$scope', '$stateParams', 'Restangular', 'actions', '$rootScope', 'user', 'toaster', '$translate',
 
-        function ($scope, $stateParams, Restangular, actions, $rootScope, user) {
+        function ($scope, $stateParams, Restangular, actions, $rootScope, user, toaster, $translate) {
             $scope.bitrates = [150, 300, 500, 1000];
             $scope.bitrate = {value: 300};
             $scope.playlist = [];
@@ -61,7 +61,11 @@ define(['../module'], function (controllers) {
             }
 
             $scope.onDrop = function (data, evt) {
-                $rootScope.$emit('playlist.add', data);
+                if (data.files.length) {
+                    $rootScope.$emit('playlist.add', data);
+                } else {
+                    toaster.pop('warning', $translate.instant('PLAYER_NOT_READABLE_TITLE'), $translate.instant('PLAYER_NOT_READABLE'));
+                }
             };
 
             $scope.onReorder = function (index, data, evt) {
