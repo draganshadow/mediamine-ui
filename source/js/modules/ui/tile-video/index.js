@@ -13,7 +13,7 @@ define(['angular'], function (angular) {
                 video:'=',
                 details:'='
             },
-            templateUrl: 'js/modules/ui/tile-video/index.html?' + MEDIAMINE_URL_ARG,
+            templateUrl: 'js/modules/ui/tile-video/index.html' + MEDIAMINE_URL_ARG_P,
             compile: function(element, attrs){
                 return function($scope, element, attrs) {
                     $scope.tileClass = $scope.tileClass ? $scope.tileClass + ' ' : '';

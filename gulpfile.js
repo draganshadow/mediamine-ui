@@ -16,6 +16,10 @@ var ngHtml2Js = require("gulp-ng-html2js");
 var minifyHtml = require("gulp-minify-html");
 var concat = require("gulp-concat");
 
+var MEDIAMINE_VERSION = '0.4.0';
+var MEDIAMINE_URL_ARG = 'bust=v' + MEDIAMINE_VERSION;
+var MEDIAMINE_URL_ARG_P = '?' + MEDIAMINE_URL_ARG;
+
 var handleError = function (err) {
     console.log(err.name, ' in ', err.plugin, ': ', err.message);
     this.emit('end');
@@ -93,10 +97,33 @@ gulp.task('js', ['html2js'], function () {
     var configBuild = {
         baseUrl: 'source',
         insertRequire: ['js/main'],
+        generateSourceMaps: true,
         name: 'js/main',
-//        removeCombined: true,
-//        optimize: "none",
-        wrap: true
+        preserveLicenseComments: false,
+        //optimize: "none",
+        optimize: "uglify2",
+        uglify2: {
+            //output: {
+            //    beautify: true
+            //},
+            'screw-ie8': true,
+            compress: {
+                global_defs: {
+                    DEBUG: true
+                }
+            },
+            warnings: false,
+            mangle: false // this is important
+        },
+        normalizeDirDefines: "skip",
+        wrapShim: false,
+        useStrict: true,
+        cjsTranslate: false,
+        throwWhen: {
+            optimize: true
+        },
+        //wrap: true,
+        skipDirOptimize: false
     };
     var paths = {
         'app-partials'          : 'html2js/temp/partials',
@@ -107,7 +134,6 @@ gulp.task('js', ['html2js'], function () {
     config.paths = _(config.paths).extend(paths);
     return gulp.src(['source/js/main.js'])
         .pipe(rjs(config).on('error', handleError))
-        .pipe(uglify().on('error', handleError))
         .pipe(gulp.dest('build/js/'));
 });
 
@@ -122,7 +148,10 @@ gulp.task('html2js', function () {
             }))
             .pipe(ngHtml2Js({
                 moduleName: "app.partials",
-                prefix: "js/"
+                prefix: "js/",
+                rename: function (url) {
+                    return url.replace('.html', '.html' + MEDIAMINE_URL_ARG_P);
+                }
             }))
             .pipe(concat("partials.js"))
             .pipe(gulp.dest("source/html2js/temp")),

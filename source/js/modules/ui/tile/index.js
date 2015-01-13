@@ -15,7 +15,7 @@ define(['angular'], function (angular) {
                 tileClass:'@',
                 imageHeight:'@'
             },
-            templateUrl: 'js/modules/ui/tile/tile.html?' + MEDIAMINE_URL_ARG,
+            templateUrl: 'js/modules/ui/tile/tile.html' + MEDIAMINE_URL_ARG_P,
             compile: function(element, attrs){
                 return function($scope, element, attrs) {
                     $scope.index = $scope.index || 0;

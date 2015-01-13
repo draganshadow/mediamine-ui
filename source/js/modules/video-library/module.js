@@ -20,7 +20,7 @@ define([
             moduleManagerProvider
                 .registerView('left', 'videoFilters',
                 {
-                    templateUrl: 'js/modules/core/empty.html?' + MEDIAMINE_URL_ARG
+                    templateUrl: 'js/modules/core/empty.html' + MEDIAMINE_URL_ARG_P
                 }
             );
             $stateProvider
@@ -29,7 +29,7 @@ define([
                     abstract: true,
                     views:{
                         "" : {
-                            templateUrl: 'js/modules/core/abstract.html?' + MEDIAMINE_URL_ARG
+                            templateUrl: 'js/modules/core/abstract.html' + MEDIAMINE_URL_ARG_P
                         }
                     }
                 })
@@ -37,7 +37,7 @@ define([
                     url: '/person/:id',
                     views: {
                         "": {
-                            templateUrl: 'js/modules/video-library/person/detail.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/video-library/person/detail.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'PersonDetail'
                         }
                     }
@@ -46,7 +46,7 @@ define([
                     url: '/season/:id',
                     views: {
                         "": {
-                            templateUrl: 'js/modules/video-library/season/detail.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/video-library/season/detail.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'SeasonDetail'
                         }
                     }
@@ -55,7 +55,7 @@ define([
                     url: '/series',
                     views: {
                         "": {
-                            templateUrl: 'js/modules/video-library/series/list.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/video-library/series/list.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'SeriesList'
                         }
                     }
@@ -64,7 +64,7 @@ define([
                     url: '/serie/:id',
                     views: {
                         "": {
-                            templateUrl: 'js/modules/video-library/series/detail.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/video-library/series/detail.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'SeriesDetail'
                         }
                     }
@@ -73,11 +73,11 @@ define([
                     url: '/videos/:param',
                     views: {
                         "": {
-                            templateUrl: 'js/modules/video-library/video/list.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/video-library/video/list.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'VideoList'
                         },
                         "videoFilters@": {
-                            templateUrl: 'js/modules/video-library/filters/index.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/video-library/filters/index.html' + MEDIAMINE_URL_ARG_P,
                                 controller: 'VideoFilters'
                         }
                     }
@@ -86,7 +86,7 @@ define([
                     url: '/video/:id',
                     views: {
                         "": {
-                            templateUrl: 'js/modules/video-library/video/detail.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/video-library/video/detail.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'VideoDetail'
                         }
                     }

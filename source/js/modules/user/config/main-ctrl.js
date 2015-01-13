@@ -7,7 +7,7 @@ define(['../module'], function (controllers) {
 
 
                 var modalInstance = $modal.open({
-                    templateUrl: 'js/modules/user/config/edit.html?' + MEDIAMINE_URL_ARG,
+                    templateUrl: 'js/modules/user/config/edit.html' + MEDIAMINE_URL_ARG_P,
                     controller: EditCtrl,
                     size: 400,
                     resolve: {

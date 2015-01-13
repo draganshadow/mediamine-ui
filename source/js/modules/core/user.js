@@ -109,7 +109,7 @@ define(['./module'], function (module) {
                         def.resolve($cookieStore.get('token'));
                     } else {
                         var modalInstance = $modal.open({
-                            templateUrl: 'js/modules/core/login.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/core/login.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'LoginModalCtrl',
                             size: 'sm',
                             backdrop: 'static',
@@ -164,7 +164,7 @@ define(['./module'], function (module) {
                 }
 
                 var load = function () {
-                    return $http.get(window.mediamine.client + '?' + MEDIAMINE_URL_ARG)
+                    return $http.get(window.mediamine.client + '' + MEDIAMINE_URL_ARG_P)
                         .success(function (data, status, headers, config) {
                             var client = angular.fromJson(data);
                             $rootScope.oauth_client = client;

@@ -25,7 +25,7 @@ define([
                 url: '/user',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/user/home.html?' + MEDIAMINE_URL_ARG,
+                        templateUrl: 'js/modules/user/home.html' + MEDIAMINE_URL_ARG_P,
                         controller: 'AdminHomeController'
                     }
                 }
@@ -34,7 +34,7 @@ define([
                 url: '/profile',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/user/profile/main.html?' + MEDIAMINE_URL_ARG,
+                        templateUrl: 'js/modules/user/profile/main.html' + MEDIAMINE_URL_ARG_P,
                         controller: 'UserProfileMain'
                     }
                 }
@@ -43,7 +43,7 @@ define([
                 url: '/config',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/user/config/main.html?' + MEDIAMINE_URL_ARG,
+                        templateUrl: 'js/modules/user/config/main.html' + MEDIAMINE_URL_ARG_P,
                         controller: 'UserConfigMain'
                     }
                 }
@@ -52,7 +52,7 @@ define([
                 url: '/logout',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/user/logout/main.html?' + MEDIAMINE_URL_ARG,
+                        templateUrl: 'js/modules/user/logout/main.html' + MEDIAMINE_URL_ARG_P,
                         controller: 'UserLogoutMain'
                     }
                 }

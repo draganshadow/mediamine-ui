@@ -31,7 +31,7 @@ define(['../module'], function (controllers) {
 
         $scope.create = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'js/modules/admin/user/create.html?' + MEDIAMINE_URL_ARG,
+                templateUrl: 'js/modules/admin/user/create.html' + MEDIAMINE_URL_ARG_P,
                 controller: EditCtrl,
                 size: 400,
                 resolve: {

@@ -24,7 +24,6 @@ define([
     './modules/ui/index'
 ], function (angular) {
     'use strict';
-
     return angular.module('app', [
         'ngAnimate',
         'ngCookies',

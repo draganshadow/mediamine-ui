@@ -12,7 +12,7 @@ define(['angular'], function (angular) {
                 videos:'=',
                 details:'='
             },
-            templateUrl: 'js/modules/ui/list-videos/index.html?' + MEDIAMINE_URL_ARG
+            templateUrl: 'js/modules/ui/list-videos/index.html' + MEDIAMINE_URL_ARG_P
         };
     });
 });

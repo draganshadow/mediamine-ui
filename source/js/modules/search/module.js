@@ -24,7 +24,7 @@ define([
                     url: '/search/:text/:param',
                     views: {
                         "": {
-                            templateUrl: 'js/modules/search/main/index.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/search/main/index.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'Search'
                         }
                     }
@@ -33,11 +33,11 @@ define([
                     url: '/search-video/:text/:param',
                     views: {
                         "": {
-                            templateUrl: 'js/modules/search/video/index.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/search/video/index.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'SearchVideo'
                         },
                         "videoFilters@": {
-                            templateUrl: 'js/modules/video-library/filters/index.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/video-library/filters/index.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'VideoFilters'
                         }
                     }
@@ -46,7 +46,7 @@ define([
                     url: '/search-series/:text/:param',
                     views: {
                         "": {
-                            templateUrl: 'js/modules/search/series/index.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/search/series/index.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'SearchSeries'
                         }
                     }
@@ -55,7 +55,7 @@ define([
                     url: '/search-person/:text/:param',
                     views: {
                         "": {
-                            templateUrl: 'js/modules/search/person/index.html?' + MEDIAMINE_URL_ARG,
+                            templateUrl: 'js/modules/search/person/index.html' + MEDIAMINE_URL_ARG_P,
                             controller: 'SearchPerson'
                         }
                     }

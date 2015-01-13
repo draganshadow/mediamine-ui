@@ -10,7 +10,7 @@ define(['angular'], function (angular) {
             scope: {
                 items:'='
             },
-            templateUrl: 'js/modules/ui/tile-carousel/index.html?' + MEDIAMINE_URL_ARG,
+            templateUrl: 'js/modules/ui/tile-carousel/index.html' + MEDIAMINE_URL_ARG_P,
             transclude:true,
             link: function(scope, element, attrs, ctrl, transclude) {
                 transclude(scope, function(clone, scope) {

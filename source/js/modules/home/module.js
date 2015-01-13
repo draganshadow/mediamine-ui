@@ -18,7 +18,7 @@ define([
                 url: '/home',
                 views: {
                     "": {
-                        templateUrl: 'js/modules/home/home.html?' + MEDIAMINE_URL_ARG,
+                        templateUrl: 'js/modules/home/home.html' + MEDIAMINE_URL_ARG_P,
                         controller: 'HomeController'
                     }
                 }
@@ -27,7 +27,7 @@ define([
         menuManagerProvider.registerEntry({
             type: 'partial',
             order: 1000,
-            templateUrl: 'js/modules/home/hideRightPanel.html?' + MEDIAMINE_URL_ARG,
+            templateUrl: 'js/modules/home/hideRightPanel.html' + MEDIAMINE_URL_ARG_P,
             class: 'navbar-right'
         });
     }]);

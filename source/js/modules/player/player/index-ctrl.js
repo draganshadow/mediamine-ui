@@ -60,7 +60,7 @@ define(['../module', 'projekktor'], function (controllers, projekktor) {
 
             var userLastVideo = user.getSetting('player', 'last_video');
             if (userLastVideo.value[0]) {
-                toaster.pop('note', $translate.instant('PLAYER_RESUME_TITLE'), 'js/modules/player/player/resume.html?' + MEDIAMINE_URL_ARG, 30000, 'template', function(toaster) {
+                toaster.pop('note', $translate.instant('PLAYER_RESUME_TITLE'), 'js/modules/player/player/resume.html' + MEDIAMINE_URL_ARG_P, 30000, 'template', function(toaster) {
                     return true;
                 });
             }

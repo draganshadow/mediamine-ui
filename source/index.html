@@ -36,8 +36,10 @@
     var MEDIAMINE_ENV = 'dev';
     var MEDIAMINE_VERSION = '0.4.0' + (('dev' === MEDIAMINE_ENV) ? '.' + (new Date()).getTime() : '');
     var MEDIAMINE_URL_ARG = 'bust=v' + MEDIAMINE_VERSION;
+    var MEDIAMINE_URL_ARG_P = '?' + MEDIAMINE_URL_ARG;
+
     // obtain requirejs config
-    require(['require', './js/config-require.js?' + MEDIAMINE_URL_ARG], function (require, config) {
+    require(['require', './js/config-require.js' + MEDIAMINE_URL_ARG_P], function (require, config) {
 
         // set cache beater
         config.urlArgs = MEDIAMINE_URL_ARG;
@@ -48,7 +50,7 @@
             serverUrl: 'http://localhost:8080/',
             apiUrl: 'http://localhost:8080/api',
             client: 'http://localhost:8080/client.json'
-//            serverUrl: 'http://qg/mediamine/',
+//            serverUrl: location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: ''),
 //            apiUrl: 'http://qg/mediamine/api'
 //            serverUrl: '',
 //            apiUrl: 'api'
