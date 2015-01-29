@@ -8,6 +8,7 @@ define([
     'ngLoading',
     'ngToaster',
     'ngCookies',
+    'ngDeviceDetector',
     'ui.router',
     './config',
     './translation',
@@ -40,6 +41,7 @@ define([
         'app.player',
         'restangular',
         'ui.router',
+        'ng.deviceDetector',
         'angular-loading-bar',
         'toaster',
         'app.user'

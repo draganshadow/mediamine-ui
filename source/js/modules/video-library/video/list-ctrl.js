@@ -9,6 +9,7 @@ define(['../module'], function (controllers) {
 
             if ($stateParams.param !== '') {
                 angular.extend(params, appCache.get('videoListParam'));
+                params.page = 1;
             } else {
                 appCache.put('videoListParam', {});
                 $state.go('mediamine.videolib.videos', {param: 'p'});

@@ -28,10 +28,10 @@ define({
         'ngAnimate' : 'vendor/angular-animate/angular-animate',
         'ngCookies' : 'vendor/angular-cookies/angular-cookies',
         'ngLoading' : 'vendor/angular-loading-bar/build/loading-bar',
+        'ngDeviceDetector' : 'vendor/ng-device-detector/ng-device-detector',
         'app-partials'          : 'html2js/partials',
         'ui-bootstrap-partials' : 'html2js/ui.bootstrap.partials'
     },
-
     shim: {
         'angular': {
             'deps': ['jquery'],
@@ -56,6 +56,7 @@ define({
         'ui-bootstrap-partials' : ['angular'],
         'ngTranslate' : ['angular'],
         'ngToaster' : ['angular', 'ngAnimate'],
+        'ngDeviceDetector' : ['angular'],
         'ngLoading' : ['angular', 'ngAnimate']
     }
 });

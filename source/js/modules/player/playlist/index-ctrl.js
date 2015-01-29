@@ -1,10 +1,14 @@
 define(['../module'], function (controllers) {
     'use strict';
-    controllers.controller('Playlist', ['$scope', '$stateParams', 'Restangular', 'actions', '$rootScope', 'user', 'toaster', '$translate',
+    controllers.controller('Playlist', ['$scope', '$stateParams', 'Restangular', 'actions', '$rootScope', 'settings', 'user', 'toaster', '$translate', 'deviceDetector',
 
-        function ($scope, $stateParams, Restangular, actions, $rootScope, user, toaster, $translate) {
+        function ($scope, $stateParams, Restangular, actions, $rootScope, settings, user, toaster, $translate, deviceDetector) {
+            var desktopBitrate = user.getSetting('player', 'desktop_bitrate');
+            var mobileBitrate = user.getSetting('player', 'mobile_bitrate');
             $scope.bitrates = [150, 300, 500, 1000];
-            $scope.bitrate = {value: 300};
+            $scope.bitrate = {
+                value: deviceDetector.isDesktop() ? desktopBitrate.value : mobileBitrate.value
+            };
             $scope.playlist = [];
 
 

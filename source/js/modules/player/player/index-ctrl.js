@@ -1,7 +1,7 @@
 define(['../module', 'projekktor'], function (controllers, projekktor) {
     'use strict';
-    controllers.controller('ResumePlayer', ['$scope', '$stateParams', 'Restangular', '$rootScope', 'UserService',
-        function ($scope, $stateParams, Restangular, $rootScope, UserService) {
+    controllers.controller('ResumePlayer', ['$scope', '$stateParams', 'Restangular', '$rootScope', 'UserService', 'deviceDetector',
+        function ($scope, $stateParams, Restangular, $rootScope, UserService, deviceDetector) {
             var userLastVideo = UserService.getSetting('player', 'last_video');
             var userLastTime = UserService.getSetting('player', 'last_time');
             function backupProgress(id, time) {
@@ -27,8 +27,8 @@ define(['../module', 'projekktor'], function (controllers, projekktor) {
                 backupProgress("", 0);
             };
         }]);
-    controllers.controller('Player', ['$scope', '$stateParams', 'Restangular', '$rootScope', 'user', 'toaster', '$translate',
-        function ($scope, $stateParams, Restangular, $rootScope, user, toaster, $translate) {
+    controllers.controller('Player', ['$scope', '$stateParams', 'Restangular', '$rootScope', 'user', 'deviceDetector', 'toaster', '$translate',
+        function ($scope, $stateParams, Restangular, $rootScope, user, deviceDetector, toaster, $translate) {
             $scope.image = $rootScope.config.serverUrl + 'images/resized/template/blank-320-240-placeholder.jpg';
             $scope.video = {
                 id: '',
@@ -114,15 +114,34 @@ define(['../module', 'projekktor'], function (controllers, projekktor) {
             var tokenParam = '?access_token=' + user.getToken().access_token;
             var setVideo = function (video) {
                 $scope.video = video;
+
+                var videoItem;
+
+                var desktopFormat = user.getSetting('player', 'desktop_format');
+                var mobileFormat = user.getSetting('player', 'mobile_format');
+
+                var format = deviceDetector.isDesktop() ? desktopFormat.value : mobileFormat.value;
+                console.log(format);
+                switch (format) {
+                    case 'flv':
+                        videoItem = {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.flv' + tokenParam, type: 'video/flv'};
+                        break;
+                    case 'mp4':
+                        videoItem = {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.mp4' + tokenParam, type: 'video/mp4'};
+                        break;
+                    case 'hls':
+                        videoItem = {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.m3u8' + tokenParam, type: 'application/mpegURL'};
+                        break;
+                    case 'webm':
+                        videoItem = {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.webm' + tokenParam, type: 'video/webm'};
+                        break;
+                    default:
+                        videoItem = {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.flv' + tokenParam, type: 'video/flv'};
+                        break;
+                }
                 projekktor('#main_player').setFile([
                     {
-//                    0: {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.flv' + tokenParam, type: 'video/flv'},
-//                    0: {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.mp4' + tokenParam, type: "video/mp4"},
-                        0: {
-                            src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.m3u8' + tokenParam,
-                            type: "application/mpegURL"
-                        },
-//                    1: {src: $rootScope.config.serverUrl + 'stream/' + video.files[0].file.pathKey + '/' + $scope.player.bitrate + '-' + video.files[0].file.pathKey + '.webm' + tokenParam, type: "video/webm"},
+                        0: videoItem,
                         config: {
                             id: video.id
                         }
