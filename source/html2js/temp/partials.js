@@ -150,7 +150,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/library/list.html?bust=v0.4.0',
-    '<div class="col-md-12 column"><panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_LIBRARY_TITLE\' | translate }}</h1></panel-heading><tabset><tab heading="{{ \'ADMIN_MAINTENANCE_FILTER_\' + filter | translate }}" ng-repeat="filter in filters" ng-click="execute(action)"></tab></tabset><table class="table table-striped"><thead><tr><th>#</th><th>{{ \'ADMIN_MAINTENANCE_NAME\' | translate }}</th></tr></thead><tbody><tr ng-repeat="item in items"><td>{{item.id}}</td><td>{{item.files[0].file.directory.path}}/<strong>{{item.files[0].file.name}}.{{item.files[0].file.extension}}</strong></td></tr></tbody></table></panel></div>');
+    '<div class="col-md-12 column"><panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_LIBRARY_TITLE\' | translate }}</h1></panel-heading><tabset><tab heading="{{ \'ADMIN_MAINTENANCE_FILTER_\' + filter | translate }}" ng-repeat="filter in filters" ng-click="execute(action)"></tab></tabset><div class="row"><div class="col-md-offset-3 col-md-6 column"><canvas id="pie" class="chart chart-pie" data="data" labels="labels" legend="true"></canvas></div></div><table class="table table-striped"><thead><tr><th>#</th><th>{{ \'ADMIN_MAINTENANCE_NAME\' | translate }}</th></tr></thead><tbody><tr ng-repeat="item in items"><td>{{item.id}}</td><td>{{item.files[0].file.directory.path}}/<strong>{{item.files[0].file.name}}.{{item.files[0].file.extension}}</strong></td></tr></tbody></table></panel></div>');
 }]);
 })();
 
@@ -162,7 +162,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/maintenance/main.html?bust=v0.4.0',
-    '<div class="col-md-12 column"><panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_MAINTENANCE_TITLE\' | translate }}</h1></panel-heading></panel><panel title="System Actions" ng-cloak=""><form class="form-horizontal" role="form"><div class="form-group"><div class="col-sm-offset-2 col-sm-10"><button ng-repeat="action in actions" ng-click="execute(action.name)" class="btn btn-default">{{action.name}}</button></div></div></form></panel></div>');
+    '<div class="col-md-12 column"><panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_MAINTENANCE_TITLE\' | translate }}</h1></panel-heading><panel title="System Actions" ng-cloak=""><panel-heading><h4>{{ \'ADMIN_ACTIONS\' | translate }}</h4></panel-heading><span ng-repeat="action in actions"><button ng-click="execute(action.name)" class="btn btn-default">{{action.name}}</button></span></panel><panel ng-cloak=""><panel-heading><h4>{{ \'ADMIN_LOGS\' | translate }}</h4></panel-heading><table class="table table-striped"><thead></thead><tbody><tr ng-repeat="log in logs track by $index"><td>{{log}}</td></tr></tbody></table></panel></panel></div>');
 }]);
 })();
 

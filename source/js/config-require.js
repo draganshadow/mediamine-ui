@@ -30,7 +30,9 @@ define({
         'ngLoading' : 'vendor/angular-loading-bar/build/loading-bar',
         'ngDeviceDetector' : 'vendor/ng-device-detector/ng-device-detector',
         'app-partials'          : 'html2js/partials',
-        'ui-bootstrap-partials' : 'html2js/ui.bootstrap.partials'
+        'ui-bootstrap-partials' : 'html2js/ui.bootstrap.partials',
+        'chart' : 'vendor/Chart.js/Chart',
+        'ngChart' : 'vendor/angular-chart.js/angular-chart'
     },
     shim: {
         'angular': {
@@ -45,6 +47,7 @@ define({
             'deps': ['jquery'],
             'exports': 'projekktor'
         },
+        'ngChart' : ['chart', 'angular'],
         'ui.router' : ['angular'],
         'ui-bootstrap-dropdown' : ['angular'],
         'ui-bootstrap-transition' : ['angular'],

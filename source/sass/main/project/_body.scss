@@ -1,7 +1,9 @@
 html {
   height: 100%;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
+  @media (min-width: $screen-sm-min) {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
 }
 body {
   height: 100%;

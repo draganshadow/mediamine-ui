@@ -5,6 +5,7 @@ define([
     '../../config',
     '../core/index',
     '../ui/index',
+    'ngChart',
     'ui-bootstrap-modal',
     'ui-bootstrap-tabs'
 ], function (angular) {
@@ -17,7 +18,8 @@ define([
     'ui.router',
     'ui.bootstrap.modal',
     'ui.bootstrap.tabs',
-    'restangular'
+    'restangular',
+    'chart.js'
     ]).config(['$stateProvider', 'moduleManagerProvider', 'menuManagerProvider', function ($stateProvider, moduleManagerProvider, menuManagerProvider) {
         $stateProvider
             .state('mediamine.admin', {
@@ -142,6 +144,10 @@ define([
                     {
                         label: 'ADMIN_MENU_FILES',
                         sref: 'mediamine.admin.files'
+                    },
+                    {
+                        label: 'ADMIN_MENU_LIBRARY',
+                        sref: 'mediamine.admin.library'
                     },
                     {
                         label: 'ADMIN_MENU_USERS',
