@@ -120,6 +120,8 @@ define(['angular', 'ngTranslate'], function (angular) {
                 YES: 'Yes',
                 NO: 'No',
                 SCAN: 'Scan',
+                PREV: '<<',
+                NEXT: '>>',
                 RESCAN_ITEM: 'Reload data',
                 PLAYER_RESUME_TITLE: 'Resume playback ?'
             });
@@ -238,6 +240,8 @@ define(['angular', 'ngTranslate'], function (angular) {
                 YES: 'Oui',
                 NO: 'Non',
                 SCAN: 'Scan',
+                PREV: '<<',
+                NEXT: '>>',
                 RESCAN_ITEM: 'Recharger les infos',
                 PLAYER_RESUME_TITLE: 'Reprendre la lecture ?'
             });
