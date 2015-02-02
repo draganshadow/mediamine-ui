@@ -4,7 +4,7 @@ define(['../module'], function (controllers) {
         $scope.genres = [];
         $scope.types = [];
 
-        Restangular.all('genres').getList()
+        Restangular.all('genres').getList({limit: 1000})
             .then(function(result) {
                 $scope.genres = $scope.genres.concat(result);
             });

@@ -29,18 +29,6 @@ try {
   module = angular.module('ui.bootstrap.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('template/alert/alert.html',
-    '<div class="alert" ng-class="{\'alert-{{type || \'warning\'}}\': true, \'alert-dismissable\': closeable}" role="alert"><button ng-show="closeable" type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button><div ng-transclude=""></div></div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('ui.bootstrap.partials');
-} catch (e) {
-  module = angular.module('ui.bootstrap.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
   $templateCache.put('template/carousel/carousel.html',
     '<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()"><ol class="carousel-indicators" ng-show="slides.length > 1"><li ng-repeat="slide in slides track by $index" ng-class="{active: isActive(slide)}" ng-click="select(slide)"></li></ol><div class="carousel-inner" ng-transclude=""></div><a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span class="glyphicon glyphicon-chevron-right"></span></a></div>');
 }]);
@@ -131,6 +119,18 @@ try {
   module = angular.module('ui.bootstrap.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('template/alert/alert.html',
+    '<div class="alert" ng-class="{\'alert-{{type || \'warning\'}}\': true, \'alert-dismissable\': closeable}" role="alert"><button ng-show="closeable" type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button><div ng-transclude=""></div></div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('ui.bootstrap.partials');
+} catch (e) {
+  module = angular.module('ui.bootstrap.partials', []);
+}
+module.run(['$templateCache', function($templateCache) {
   $templateCache.put('template/modal/backdrop.html',
     '<div class="modal-backdrop fade" ng-class="{in: animate}" ng-style="{\'z-index\': 1040 + (index && 1 || 0) + index*10}"></div>');
 }]);
@@ -179,18 +179,6 @@ try {
   module = angular.module('ui.bootstrap.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('template/popover/popover.html',
-    '<div class="popover {{placement}}" ng-class="{ in: isOpen(), fade: animation() }"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title" ng-bind="title" ng-show="title"></h3><div class="popover-content" ng-bind="content"></div></div></div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('ui.bootstrap.partials');
-} catch (e) {
-  module = angular.module('ui.bootstrap.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
   $templateCache.put('template/progressbar/bar.html',
     '<div class="progress-bar" ng-class="type && \'progress-bar-\' + type" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="0" aria-valuemax="{{max}}" ng-style="{width: percent + \'%\'}" aria-valuetext="{{percent | number:0}}%" ng-transclude=""></div>');
 }]);
@@ -229,6 +217,18 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('template/rating/rating.html',
     '<span ng-mouseleave="reset()" ng-keydown="onKeydown($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="{{range.length}}" aria-valuenow="{{value}}"><i ng-repeat="r in range track by $index" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon" ng-class="$index < value && (r.stateOn || \'glyphicon-star\') || (r.stateOff || \'glyphicon-star-empty\')"><span class="sr-only">({{ $index < value ? \'*\' : \' \' }})</span></i></span>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('ui.bootstrap.partials');
+} catch (e) {
+  module = angular.module('ui.bootstrap.partials', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('template/popover/popover.html',
+    '<div class="popover {{placement}}" ng-class="{ in: isOpen(), fade: animation() }"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title" ng-bind="title" ng-show="title"></h3><div class="popover-content" ng-bind="content"></div></div></div>');
 }]);
 })();
 

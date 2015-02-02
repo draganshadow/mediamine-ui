@@ -77,8 +77,8 @@ try {
   module = angular.module('app.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('js/modules/menu/menu.html?bust=v0.4.0',
-    '<nav class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="navbar-header"><a class="navbar-brand" ui-sref="mediamine.home">MediaMine</a></div><div class="collapse navbar-collapse navbar-ex1-collapse"><div class="container-fluid"><div ng-repeat="item in menuItems | orderBy:\'order\'"><div ng-if="!item.condition || item.condition($root)"><div ng-if="item.type == \'link\'"><ul class="nav navbar-nav {{item.class}}"><li active-link="active"><a ng-if="item.sref" ui-sref="{{item.sref}}">{{ item.label | translate }}</a> <a ng-if="!item.sref" href="{{item.href}}">{{ item.label | translate }}</a></li></ul></div><div ng-if="item.type == \'partial\'" class="{{item.class}}" ng-include="item.templateUrl"></div><div ng-if="item.type == \'dropdown\'"><ul class="nav navbar-nav {{item.class}}"><li class="dropdown"><a class="dropdown-toggle"><i ng-if="item.preIcon" ng-class="item.preIcon" title="{{ item.preIconTitle | translate }}"></i> <span ng-if="item.labelExpr">{{$root.$eval(item.labelExpr)}}</span> <span ng-if="item.label">{{ item.label | translate }}</span> <i ng-if="item.icon" ng-class="item.icon"></i></a><ul class="dropdown-menu"><li ng-repeat="subItem in item.subItems"><a ng-if="subItem.sref" ui-sref="{{subItem.sref}}">{{ subItem.label | translate }}</a> <a ng-if="!subItem.sref" href="{{subItem.href}}">{{ subItem.label | translate }}</a></li></ul></li></ul></div></div></div></div></div></nav>');
+  $templateCache.put('js/modules/search/module.html?bust=v0.4.0',
+    '<div ui-view=""></div>');
 }]);
 })();
 
@@ -89,8 +89,8 @@ try {
   module = angular.module('app.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('js/modules/search/module.html?bust=v0.4.0',
-    '<div ui-view=""></div>');
+  $templateCache.put('js/modules/menu/menu.html?bust=v0.4.0',
+    '<nav class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="navbar-header"><a class="navbar-brand" ui-sref="mediamine.home">MediaMine</a></div><div class="collapse navbar-collapse navbar-ex1-collapse"><div class="container-fluid"><div ng-repeat="item in menuItems | orderBy:\'order\'"><div ng-if="!item.condition || item.condition($root)"><div ng-if="item.type == \'link\'"><ul class="nav navbar-nav {{item.class}}"><li active-link="active"><a ng-if="item.sref" ui-sref="{{item.sref}}">{{ item.label | translate }}</a> <a ng-if="!item.sref" href="{{item.href}}">{{ item.label | translate }}</a></li></ul></div><div ng-if="item.type == \'partial\'" class="{{item.class}}" ng-include="item.templateUrl"></div><div ng-if="item.type == \'dropdown\'"><ul class="nav navbar-nav {{item.class}}"><li class="dropdown"><a class="dropdown-toggle"><i ng-if="item.preIcon" ng-class="item.preIcon" title="{{ item.preIconTitle | translate }}"></i> <span ng-if="item.labelExpr">{{$root.$eval(item.labelExpr)}}</span> <span ng-if="item.label">{{ item.label | translate }}</span> <i ng-if="item.icon" ng-class="item.icon"></i></a><ul class="dropdown-menu"><li ng-repeat="subItem in item.subItems"><a ng-if="subItem.sref" ui-sref="{{subItem.sref}}">{{ subItem.label | translate }}</a> <a ng-if="!subItem.sref" href="{{subItem.href}}">{{ subItem.label | translate }}</a></li></ul></li></ul></div></div></div></div></div></nav>');
 }]);
 })();
 
@@ -137,18 +137,6 @@ try {
   module = angular.module('app.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('js/modules/admin/jobs/main.html?bust=v0.4.0',
-    '<div class="col-md-12 column"><panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_TASKS_TITLE\' | translate }}</h1></panel-heading><tabset><tab heading="{{ \'ADMIN_TASKS_RUNNING\' | translate }}"></tab></tabset><p class="pull-right"><button type="button" class="btn btn-primary btn-xs margin-top-xs" ng-click="refreshList()">{{ \'ADMIN_TASKS_REFRESH\' | translate }}</button><button type="button" class="btn btn-danger btn-xs margin-top-xs" ng-click="clear()">{{ \'ADMIN_TASKS_CLEAR\' | translate }}</button></p><table class="table table-striped"><thead><tr><th>{{ \'ADMIN_TASKS_GROUP\' | translate }}</th><th>{{ \'ADMIN_TASKS_KEY\' | translate }}</th><th>{{ \'ADMIN_TASKS_PROGRESS\' | translate }}</th><th></th></tr></thead><tbody><tr ng-repeat="job in jobs"><td>{{job.groupKey}}</td><td>{{job.key}}</td><td>{{job.barLabel}}</td><td><div class="progress"><div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{job.percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{job.percent}}%;">{{job.percent}}%</div></div></td></tr></tbody></table></panel></div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('app.partials');
-} catch (e) {
-  module = angular.module('app.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/library/list.html?bust=v0.4.0',
     '<div class="col-md-12 column"><panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_LIBRARY_TITLE\' | translate }}</h1></panel-heading><div class="row"><div class="col-md-offset-3 col-md-6 column"><canvas id="pie" class="chart chart-pie" data="data" labels="labels" legend="true"></canvas></div></div><tabset><tab heading="{{ \'ADMIN_MAINTENANCE_FILTER_\' + filter | translate }}" ng-repeat="filter in filters" ng-click="execute(action)"></tab></tabset><p class="pull-right"><button type="button" class="btn btn-primary btn-xs margin-top-xs" ng-click="prev()" ng-disabled="!allowPrev">{{ \'PREV\' | translate }}</button><button type="button" class="btn btn-primary btn-xs margin-top-xs" ng-click="next()" ng-disabled="!allowNext">{{ \'NEXT\' | translate }}</button></p><table class="table table-striped"><thead><tr><th>#</th><th>{{ \'ADMIN_MAINTENANCE_NAME\' | translate }}</th></tr></thead><tbody><tr ng-repeat="item in items"><td>{{item.id}}</td><td>{{item.files[0].file.directory.path}}/<strong>{{item.files[0].file.name}}.{{item.files[0].file.extension}}</strong></td></tr></tbody></table></panel></div>');
 }]);
@@ -163,6 +151,18 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/admin/maintenance/main.html?bust=v0.4.0',
     '<div class="col-md-12 column"><panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_MAINTENANCE_TITLE\' | translate }}</h1></panel-heading><panel title="System Actions" ng-cloak=""><panel-heading><h4>{{ \'ADMIN_ACTIONS\' | translate }}</h4></panel-heading><span ng-repeat="action in actions"><button ng-click="execute(action.name)" class="btn btn-default">{{action.name}}</button></span></panel><panel ng-cloak=""><panel-heading><h4>{{ \'ADMIN_LOGS\' | translate }}</h4></panel-heading><table class="table table-striped"><thead></thead><tbody><tr ng-repeat="log in logs track by $index"><td>{{log}}</td></tr></tbody></table></panel></panel></div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('app.partials');
+} catch (e) {
+  module = angular.module('app.partials', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('js/modules/admin/jobs/main.html?bust=v0.4.0',
+    '<div class="col-md-12 column"><panel ng-cloak=""><panel-heading><h1>{{ \'ADMIN_TASKS_TITLE\' | translate }}</h1></panel-heading><tabset><tab heading="{{ \'ADMIN_TASKS_RUNNING\' | translate }}"></tab></tabset><p class="pull-right"><button type="button" class="btn btn-primary btn-xs margin-top-xs" ng-click="refreshList()">{{ \'ADMIN_TASKS_REFRESH\' | translate }}</button><button type="button" class="btn btn-danger btn-xs margin-top-xs" ng-click="clear()">{{ \'ADMIN_TASKS_CLEAR\' | translate }}</button></p><table class="table table-striped"><thead><tr><th>{{ \'ADMIN_TASKS_GROUP\' | translate }}</th><th>{{ \'ADMIN_TASKS_KEY\' | translate }}</th><th>{{ \'ADMIN_TASKS_PROGRESS\' | translate }}</th><th></th></tr></thead><tbody><tr ng-repeat="job in jobs"><td>{{job.groupKey}}</td><td>{{job.key}}</td><td>{{job.barLabel}}</td><td><div class="progress"><div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{job.percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{job.percent}}%;">{{job.percent}}%</div></div></td></tr></tbody></table></panel></div>');
 }]);
 })();
 
@@ -413,8 +413,8 @@ try {
   module = angular.module('app.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('js/modules/ui/tile-carousel/index.html?bust=v0.4.0',
-    '<div class="scroll-x"><table><tr><td class="valign-top" ng-repeat="item in items">{{item.person.name}}<div ng-transclude=""></div></td></tr></table></div>');
+  $templateCache.put('js/modules/ui/tile-video/index.html?bust=v0.4.0',
+    '<div class="{{tileClass}}" ng-drag="allowDrag" ng-drag-data="video" ng-drag-resize="4"><tile image="{{video.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'video\': \'hrbox_ffffff\'}}" title="{{video.name}}" index="$index"><div class="btn-group btn-group-xs tile-control" ng-prevent-drag=""><a class="btn btn-xs btn-primary" ng-click="$root.$emit(\'playlist.play\', video)"><span class="glyphicon glyphicon-play"></span></a> <a class="btn btn-xs btn-primary" ng-click="$root.$emit(\'playlist.add\', video)"><span class="glyphicon glyphicon-plus"></span></a></div><h6 class="space-nowrap overflow-hidden" ng-prevent-drag=""><span ng-if="details"><span ng-if="video.group"><a ui-sref="mediamine.videolib.serie({id: video.group.id})">{{video.group.name}}</a></span></span></h6><h4 class="space-nowrap overflow-hidden" ng-prevent-drag=""><span ng-if="video.season"><a ui-sref="mediamine.videolib.season({id: video.season.id})">S{{video.season.number}}</a> -</span> <span ng-if="video.episode">{{video.episode}} -</span> <a ui-sref="mediamine.videolib.video({id: video.id})">{{video.name}}</a> <span ng-if="video.year">({{video.year}})</span></h4></tile></div>');
 }]);
 })();
 
@@ -425,8 +425,8 @@ try {
   module = angular.module('app.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('js/modules/ui/tile-video/index.html?bust=v0.4.0',
-    '<div class="{{tileClass}}" ng-drag="allowDrag" ng-drag-data="video" ng-drag-resize="4"><tile image="{{video.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'video\': \'hrbox_ffffff\'}}" title="{{video.name}}" index="$index"><div class="btn-group btn-group-xs tile-control" ng-prevent-drag=""><a class="btn btn-xs btn-primary" ng-click="$root.$emit(\'playlist.play\', video)"><span class="glyphicon glyphicon-play"></span></a> <a class="btn btn-xs btn-primary" ng-click="$root.$emit(\'playlist.add\', video)"><span class="glyphicon glyphicon-plus"></span></a></div><h6 class="space-nowrap overflow-hidden" ng-prevent-drag=""><span ng-if="details"><span ng-if="video.group"><a ui-sref="mediamine.videolib.serie({id: video.group.id})">{{video.group.name}}</a></span></span></h6><h4 class="space-nowrap overflow-hidden" ng-prevent-drag=""><span ng-if="video.season"><a ui-sref="mediamine.videolib.season({id: video.season.id})">S{{video.season.number}}</a> -</span> <span ng-if="video.episode">{{video.episode}} -</span> <a ui-sref="mediamine.videolib.video({id: video.id})">{{video.name}}</a> <span ng-if="video.year">({{video.year}})</span></h4></tile></div>');
+  $templateCache.put('js/modules/ui/tile-carousel/index.html?bust=v0.4.0',
+    '<div class="scroll-x"><table><tr><td class="valign-top" ng-repeat="item in items">{{item.person.name}}<div ng-transclude=""></div></td></tr></table></div>');
 }]);
 })();
 
@@ -521,6 +521,30 @@ try {
   module = angular.module('app.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('js/modules/video-library/video/detail.html?bust=v0.4.0',
+    '<div class="col-md-{{$root.viewSize(8, 2)}} col-md-offset-{{$root.viewSize(2, -2, 0)}} column"><panel ng-show="video" ng-cloak=""><panel-heading><h1><span ng-if="video.group"><a ui-sref="mediamine.videolib.serie({id: video.group.id})">{{video.group.name}}</a> -</span> <span ng-if="video.season"><a ui-sref="mediamine.videolib.season({id: video.season.id})">S{{video.season.number}}</a> -</span> <span ng-if="video.episode">{{video.episode}} -</span>{{video.name}}<span ng-if="video.year">({{video.year}})</span></h1></panel-heading><div class="row clearfix"><div class="col-xs-4 col-sm-4 col-md-4 column overflow-hidden"><img ng-src="{{video.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'video\': \'hrbox_ffffff\'}}" class="thumbnail img-rounded"></div><div class="col-xs-8 col-sm-8 col-md-8 column"><div class="panel panel-default"><div class="panel-heading">{{ \'VIDEO_DETAILS\' | translate }}</div><div class="panel-body"><ul><li ng-repeat="staff in video.staffs | filter:{role:\'!actor\'}"><strong>{{ staff.role | translate }}:</strong>{{staff.person.name}}</li><li><strong>{{ \'VIDEO_GENRES\' | translate }}</strong> <span ng-repeat="genre in video.genres"><span class="label label-default">{{genre.name}}</span>{{$last ? \'\' : \' \'}}</span></li></ul><span ng-if="!video.files[0]">{{ \'VIDEO_NO_FILE\' | translate }}</span> <a class="btn btn-primary" ng-if="video.files[0]" ng-click="$root.$emit(\'playlist.play\', video)"><span class="glyphicon glyphicon-play"></span> {{ \'VIDEO_PLAY\' | translate }}</a><div ng-if="video.files[0]" class="btn-group" dropdown=""><a class="btn btn-default" type="button" href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/300-\' + video.files[0].file.pathKey + \'.mp4?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}" target="_blank"><span class="glyphicon glyphicon-download"></span> {{ \'VIDEO_DOWNLOAD\' | translate }}</a><button type="button" class="btn btn-default dropdown-toggle"><span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="{{$root.config.serverUrl + \'file/\' + video.files[0].file.pathKey + \'?access_token=\' + $root.oauth_token.access_token}}" download="{{video.files[0].file.name}}.{{video.files[0].file.extension}}" target="_blank">original</a></li><li><a href="{{$root.config.serverUrl + \'zip/\' + video.files[0].file.directory.id + \'.zip?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}.zip" target="_blank">zip</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/150-\' + video.files[0].file.pathKey + \'.mp4?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}.mp4" target="_blank">mp4 (150)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/300-\' + video.files[0].file.pathKey + \'.mp4?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}.mp4" target="_blank">mp4 (300)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/600-\' + video.files[0].file.pathKey + \'.mp4?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}.mp4" target="_blank">mp4 (600)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/150-\' + video.files[0].file.pathKey + \'.flv?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}.flv" target="_blank">flv (150)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/300-\' + video.files[0].file.pathKey + \'.flv?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}.flv" target="_blank">flv (300)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/600-\' + video.files[0].file.pathKey + \'.flv?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}.flv" target="_blank">flv (600)</a></li></ul></div><button type="button" class="btn btn-default" ng-click="scan()">{{ \'RESCAN_ITEM\' | translate }}</button></div></div></div></div><div class="panel panel-default"><div class="panel-heading">{{ \'VIDEO_SUMMARY\' | translate }}</div><div class="panel-body">{{video.summary}}</div></div><div class="panel panel-default"><div class="panel-heading">{{ \'VIDEO_ACTORS\' | translate }}</div><div class="panel-body scroll-x"><table><tr><td class="valign-top" ng-repeat="staff in video.staffs | filter:{role:\'actor\'}"><tile tile-class="width-xl margin-right-xs" image="{{person.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'portrait\' : \'hrbox_ffffff\'}}" image-height="xl" title="{{staff.person.name}}" index="$index"><h4 class="space-nowrap overflow-hidden"><a ui-sref="mediamine.videolib.person({id: staff.person.id})">{{staff.person.name}}</a></h4><h5 class="space-nowrap overflow-hidden">{{staff.character.name || \'-\'}}</h5></tile></td></tr></table></div></div></panel></div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('app.partials');
+} catch (e) {
+  module = angular.module('app.partials', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('js/modules/video-library/video/list.html?bust=v0.4.0',
+    '<list-videos videos="videos"></list-videos>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('app.partials');
+} catch (e) {
+  module = angular.module('app.partials', []);
+}
+module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/video-library/series/detail.html?bust=v0.4.0',
     '<panel ng-show="serie" ng-cloak=""><panel-heading><h1>{{serie.name}}</h1></panel-heading><p>{{serie.summary}}</p><p><a class="btn btn-primary" ng-click="playRandom(serie)"><span class="glyphicon glyphicon-play"></span> {{ \'VIDEO_PLAY\' | translate }}</a></p></panel><div class="col-sm-4 col-md-2" ng-repeat="season in seasons"><tile image="{{season.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'placeholder\': \'hrbox_ffffff\'}}" title="{{season.name}}" index="$index"><h4 class="space-nowrap overflow-hidden"><a ui-sref="mediamine.videolib.season({id: season.id})">{{season.name}}</a></h4></tile></div>');
 }]);
@@ -535,29 +559,5 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('js/modules/video-library/series/list.html?bust=v0.4.0',
     '<div class="col-xs-{{$root.viewSize(2, 2)}} col-sm-{{$root.viewSize(2, 2)}} col-md-2 mbm" ng-repeat="serie in series"><tile image="{{serie.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'placeholder\': \'hrbox_ffffff\'}}" title="{{serie.name}}" index="$index"><h4 class="space-nowrap overflow-hidden"><a ui-sref="mediamine.videolib.serie({id: serie.id})">{{serie.name}}</a></h4></tile></div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('app.partials');
-} catch (e) {
-  module = angular.module('app.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('js/modules/video-library/video/detail.html?bust=v0.4.0',
-    '<div class="col-md-{{$root.viewSize(8, 2)}} col-md-offset-{{$root.viewSize(2, -2, 0)}} column"><panel ng-show="video" ng-cloak=""><panel-heading><h1><span ng-if="video.group"><a ui-sref="mediamine.videolib.serie({id: video.group.id})">{{video.group.name}}</a> -</span> <span ng-if="video.season"><a ui-sref="mediamine.videolib.season({id: video.season.id})">S{{video.season.number}}</a> -</span> <span ng-if="video.episode">{{video.episode}} -</span>{{video.name}}<span ng-if="video.year">({{video.year}})</span></h1></panel-heading><div class="row clearfix"><div class="col-xs-4 col-sm-4 col-md-4 column overflow-hidden"><img ng-src="{{video.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'video\': \'hrbox_ffffff\'}}" class="thumbnail img-rounded"></div><div class="col-xs-8 col-sm-8 col-md-8 column"><div class="panel panel-default"><div class="panel-heading">{{ \'VIDEO_DETAILS\' | translate }}</div><div class="panel-body"><ul><li ng-repeat="staff in video.staffs | filter:{role:\'!actor\'}"><strong>{{ staff.role | translate }}:</strong>{{staff.person.name}}</li><li><strong>{{ \'VIDEO_GENRES\' | translate }}</strong> <span ng-repeat="genre in video.genres"><span class="label label-default">{{genre.name}}</span>{{$last ? \'\' : \' \'}}</span></li></ul><span ng-if="!video.files[0]">{{ \'VIDEO_NO_FILE\' | translate }}</span> <a class="btn btn-primary" ng-if="video.files[0]" ng-click="$root.$emit(\'playlist.play\', video)"><span class="glyphicon glyphicon-play"></span> {{ \'VIDEO_PLAY\' | translate }}</a><div ng-if="video.files[0]" class="btn-group" dropdown=""><a class="btn btn-default" type="button" href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/300-\' + video.files[0].file.pathKey + \'.mp4?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}" target="_blank"><span class="glyphicon glyphicon-download"></span> {{ \'VIDEO_DOWNLOAD\' | translate }}</a><button type="button" class="btn btn-default dropdown-toggle"><span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/150-\' + video.files[0].file.pathKey + \'.mp4?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}" target="_blank">mp4 (150)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/300-\' + video.files[0].file.pathKey + \'.mp4?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}" target="_blank">mp4 (300)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/600-\' + video.files[0].file.pathKey + \'.mp4?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}" target="_blank">mp4 (600)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/150-\' + video.files[0].file.pathKey + \'.flv?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}" target="_blank">flv (150)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/300-\' + video.files[0].file.pathKey + \'.flv?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}" target="_blank">flv (300)</a></li><li><a href="{{$root.config.serverUrl + \'stream/\' + video.files[0].file.pathKey + \'/600-\' + video.files[0].file.pathKey + \'.flv?access_token=\' + $root.oauth_token.access_token}}" download="{{video.name}}" target="_blank">flv (600)</a></li></ul></div><button type="button" class="btn btn-default" ng-click="scan()">{{ \'RESCAN_ITEM\' | translate }}</button></div></div></div></div><div class="panel panel-default"><div class="panel-heading">{{ \'VIDEO_SUMMARY\' | translate }}</div><div class="panel-body">{{video.summary}}</div></div><div class="panel panel-default"><div class="panel-heading">{{ \'VIDEO_ACTORS\' | translate }}</div><div class="panel-body scroll-x"><table><tr><td class="valign-top" ng-repeat="staff in video.staffs | filter:{role:\'actor\'}"><tile tile-class="width-xl margin-right-xs" image="{{person.images[0].pathKey | imagePath : 300 : 400 : \'jpg\' : \'hrbox\' : \'portrait\' : \'hrbox_ffffff\'}}" image-height="xl" title="{{staff.person.name}}" index="$index"><h4 class="space-nowrap overflow-hidden"><a ui-sref="mediamine.videolib.person({id: staff.person.id})">{{staff.person.name}}</a></h4><h5 class="space-nowrap overflow-hidden">{{staff.character.name || \'-\'}}</h5></tile></td></tr></table></div></div></panel></div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('app.partials');
-} catch (e) {
-  module = angular.module('app.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('js/modules/video-library/video/list.html?bust=v0.4.0',
-    '<list-videos videos="videos"></list-videos>');
 }]);
 })();

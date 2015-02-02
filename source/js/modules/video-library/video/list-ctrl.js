@@ -30,7 +30,7 @@ define(['../module'], function (controllers) {
             });
             var unbindVideoGenreListener = $rootScope.$on('filter.video.genre', function(event, genre) {
                 params.page = 1;
-                params.genre = genre ? genre.name : null;
+                params.genre = genre ? genre.id : null;
                 appCache.put('videoListParam', params);
                 Restangular.all('videos').getList(params)
                     .then(function(result) {
