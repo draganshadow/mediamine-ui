@@ -37,6 +37,15 @@ define(['../module'], function (controllers) {
                         $scope.videos = result;
                     });
             });
+            var unbindVideoYearListener = $rootScope.$on('filter.video.year', function(event, year) {
+                params.page = 1;
+                params.year = year ? year.year : null;
+                appCache.put('videoListParam', params);
+                Restangular.all('videos').getList(params)
+                    .then(function(result) {
+                        $scope.videos = result;
+                    });
+            });
 
             var unbindVideoTypeListener = $rootScope.$on('filter.video.type', function(event, type) {
                 params.page = 1;
@@ -50,6 +59,7 @@ define(['../module'], function (controllers) {
             $scope.$on('$destroy', function () {
                 unbindScrollListener();
                 unbindVideoGenreListener();
+                unbindVideoYearListener();
                 unbindVideoTypeListener();
             });
         }]);
