@@ -18,6 +18,9 @@
   @extend .frame;
 
   height: 0%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  @include user-select(none);
   @media (min-width: $screen-sm-min) {
     height: 0%;
   }

@@ -5,6 +5,8 @@ define([
     '../../config',
     '../ui/index',
     'ui-bootstrap-accordion',
+    'ui-bootstrap-pagination',
+    'ngSlider',
     '../core/index'
 ], function (angular) {
     'use strict';
@@ -15,6 +17,8 @@ define([
             'app.ui',
             'ui.router',
             'ui.bootstrap.accordion',
+            'ui.bootstrap-slider',
+            'ui.bootstrap.pagination',
             'restangular'
         ]).config(['$stateProvider', 'moduleManagerProvider', 'menuManagerProvider', function ($stateProvider, moduleManagerProvider, menuManagerProvider) {
             moduleManagerProvider
@@ -51,8 +55,17 @@ define([
                         }
                     }
                 })
-                .state('mediamine.videolib.series', {
+                .state('mediamine.videolib.series_reset', {
                     url: '/series',
+                    views: {
+                        "": {
+                            templateUrl: 'js/modules/video-library/series/list.html' + MEDIAMINE_URL_ARG_P,
+                            controller: 'SeriesList'
+                        }
+                    }
+                })
+                .state('mediamine.videolib.series', {
+                    url: '/series/:param',
                     views: {
                         "": {
                             templateUrl: 'js/modules/video-library/series/list.html' + MEDIAMINE_URL_ARG_P,
@@ -69,6 +82,15 @@ define([
                         }
                     }
                 })
+                .state('mediamine.videolib.videos_reset', {
+                    url: '/videos',
+                    views: {
+                        "": {
+                            templateUrl: 'js/modules/video-library/video/list.html' + MEDIAMINE_URL_ARG_P,
+                            controller: 'VideoList'
+                        }
+                    }
+                })
                 .state('mediamine.videolib.videos', {
                     url: '/videos/:param',
                     views: {
@@ -78,7 +100,7 @@ define([
                         },
                         "videoFilters@": {
                             templateUrl: 'js/modules/video-library/filters/index.html' + MEDIAMINE_URL_ARG_P,
-                                controller: 'VideoFilters'
+                            controller: 'VideoFilters'
                         }
                     }
                 })
@@ -96,13 +118,13 @@ define([
                 type: 'link',
                 order: 1,
                 label: 'MENU_MOVIES',
-                sref: 'mediamine.videolib.videos'
+                sref: 'mediamine.videolib.videos_reset'
             });
             menuManagerProvider.registerEntry({
                 type: 'link',
                 order: 2,
                 label: 'MENU_SERIES',
-                sref: 'mediamine.videolib.series'
+                sref: 'mediamine.videolib.series_reset'
             });
         }]);
 });

@@ -25,6 +25,7 @@
     "angular-ui-router": "latest",
     "angular-ui-bootstrap": "latest",
     "angular-translate": "latest",
+    "angular-bootstrap-slider": "latest",
     "ng-device-detector": "latest",
     "jasmine-matchers": "https://github.com/JamieMason/Jasmine-Matchers.git#=1.20.0",
     "jquery": "2.1.*",

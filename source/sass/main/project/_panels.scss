@@ -1,3 +1,10 @@
+.left-frame {
+  .panel-body {
+    padding: 10px;
+  }
+}
+
+
 .side-panel {
   padding-top: 5px;
   background-color: #A9A9A9;
@@ -8,6 +15,11 @@
       padding-bottom: 0;
       padding-left: 5px;
       padding-right: 5px;
+    }
+  }
+  &.side-panel-left {
+    .panel-body {
+      padding-right: 10px;
     }
   }
   &.last-panel {

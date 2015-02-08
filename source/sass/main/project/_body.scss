@@ -1,8 +1,8 @@
 html {
   height: 100%;
   @media (min-width: $screen-sm-min) {
-    -webkit-user-select: none;
     -webkit-touch-callout: none;
+    @include user-select(none);
   }
 }
 body {

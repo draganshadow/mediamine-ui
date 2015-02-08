@@ -18,6 +18,7 @@ define(['angular'], function (angular) {
                 return function($scope, element, attrs) {
                     $scope.tileClass = $scope.tileClass ? $scope.tileClass + ' ' : '';
                     $scope.allowDrag = deviceDetector.isDesktop();
+                    $scope.imageLink = deviceDetector.isMobile() ? 'mediamine.videolib.video({id: ' + $scope.video.id +'})' : '';
                 };
             }
         };

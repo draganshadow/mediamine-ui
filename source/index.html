@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col-md-{{$root.viewSize(12, -2)}} main-frame">
-            <div class="col-md-12 frame-content" when-scrolled="$root.$emit('main.frame.scroll')">
+            <div id="main-frame" class="col-md-12 frame-content" when-scrolled="$root.$emit('main.frame.scroll')">
                 <div ui-view></div>
             </div>
         </div>

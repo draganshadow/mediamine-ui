@@ -13,7 +13,8 @@ define(['angular'], function (angular) {
                 title:'@',
                 index:'=?',
                 tileClass:'@',
-                imageHeight:'@'
+                imageHeight:'@',
+                imageLink:'@'
             },
             templateUrl: 'js/modules/ui/tile/tile.html' + MEDIAMINE_URL_ARG_P,
             compile: function(element, attrs){
@@ -21,6 +22,8 @@ define(['angular'], function (angular) {
                     $scope.index = $scope.index || 0;
                     $scope.tileClass = $scope.tileClass ? $scope.tileClass + ' ' : '';
                     $scope.imageHeight = $scope.imageHeight ? $scope.imageHeight : 'xxl';
+                    $scope.imageLink = $scope.imageLink ? $scope.imageLink : false;
+                    $scope.withLink = $scope.imageLink ? true : false;
                     var delay = 100 + $scope.index * 50;
                     $timeout(function() {
                         element.children().addClass('in');
