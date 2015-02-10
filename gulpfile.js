@@ -16,7 +16,7 @@ var ngHtml2Js = require("gulp-ng-html2js");
 var minifyHtml = require("gulp-minify-html");
 var concat = require("gulp-concat");
 
-var MEDIAMINE_VERSION = '0.4.0';
+var MEDIAMINE_VERSION = '0.4.4';
 var MEDIAMINE_URL_ARG = 'bust=v' + MEDIAMINE_VERSION;
 var MEDIAMINE_URL_ARG_P = '?' + MEDIAMINE_URL_ARG;
 

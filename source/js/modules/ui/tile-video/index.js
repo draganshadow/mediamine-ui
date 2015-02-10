@@ -14,13 +14,11 @@ define(['angular'], function (angular) {
                 details : '='
             },
             templateUrl: 'js/modules/ui/tile-video/index.html' + MEDIAMINE_URL_ARG_P,
-            compile: function(element, attrs){
-                return function($scope, element, attrs) {
-                    $scope.tileClass = $scope.tileClass ? $scope.tileClass + ' ' : '';
-                    $scope.allowDrag = deviceDetector.isDesktop();
-                    $scope.imageLink = deviceDetector.isMobile() ? 'mediamine.videolib.video({id: ' + $scope.video.id +'})' : '';
-                };
-            }
+            controller: ['$scope', function($scope) {
+                $scope.tileClass = $scope.tileClass ? $scope.tileClass + ' ' : '';
+                $scope.allowDrag = deviceDetector.isDesktop();
+                $scope.imageLink = /*deviceDetector.isMobile() ? */'mediamine.videolib.video({id: ' + $scope.video.id +'})'/* : ''*/;
+            }]
         };
     }]);
 });
