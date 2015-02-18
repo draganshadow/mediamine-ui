@@ -21,6 +21,7 @@ define([
     './modules/search/index',
     './modules/admin/index',
     './modules/user/index',
+    './modules/files/index',
     './modules/video-library/index',
     './modules/ui/index'
 ], function (angular) {
@@ -35,6 +36,7 @@ define([
         'ui.bootstrap.partials',
         'app.admin',
         'app.home',
+        'app.files',
         'app.search',
         'app.videolib',
         'app.ui',

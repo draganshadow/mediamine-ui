@@ -12,6 +12,7 @@ define(['angular', 'ngTranslate'], function (angular) {
                 SEARCH_PH: 'Movie, Serie, Actor ...',
                 MENU_MOVIES: 'Movies',
                 MENU_SERIES: 'Series',
+                MENU_FILES: 'Files',
                 MOVIE: 'Movie',
                 SERIE: 'Serie',
                 ACTOR: 'Actor',
@@ -123,6 +124,7 @@ define(['angular', 'ngTranslate'], function (angular) {
                 SCAN: 'Scan',
                 PREV: '<<',
                 NEXT: '>>',
+                DIRECTORY_CONTENT: 'Directory Content',
                 RESCAN_ITEM: 'Reload data',
                 PLAYER_RESUME_TITLE: 'Resume playback ?'
             });
@@ -132,6 +134,7 @@ define(['angular', 'ngTranslate'], function (angular) {
                 SEARCH_PH: 'Film, Serie, Acteur ...',
                 MENU_MOVIES: 'Films',
                 MENU_SERIES: 'Series',
+                MENU_FILES: 'Fichiers',
                 MOVIE: 'Film',
                 SERIE: 'Serie',
                 ACTOR: 'Acteur',
@@ -244,6 +247,7 @@ define(['angular', 'ngTranslate'], function (angular) {
                 SCAN: 'Scan',
                 PREV: '<<',
                 NEXT: '>>',
+                DIRECTORY_CONTENT: 'Contenu du Répertoire',
                 RESCAN_ITEM: 'Recharger les infos',
                 PLAYER_RESUME_TITLE: 'Reprendre la lecture ?'
             });
